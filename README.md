@@ -1,1 +1,2 @@
-# Project-2
+# Keeping Stock
+A stock tracking and financial news application for beginner investors. 
