@@ -1,3 +1,5 @@
+@import url("../stylesheets/header.css");
+
 * {
   margin: 0;
   padding: 0;
@@ -8,210 +10,14 @@ html {
   background-color: #e0e1dd;
 }
 
-/* header font css */
-
-@font-face {
-  font-family: projectFont;
-  src: url(../assets/font/espa.otf);
-}
-
-/* Logo */
-
-.projectFont {
-  font-family: projectFont;
-  font-size: 35px;
-  color: #137aa8;
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: space-evenly;
-  background-color: #e0e1dd;
-}
-
-body {
-  font-family: Arial, sans-serif;
-}
-
-nav {
-  background-color: #e0e1dd;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px;
-  color: black;
-  position: relative;
-}
-
-/* Search Bar */
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  padding: 5px;
-  border-radius: 5px;
-  margin-right: 20px;
-}
-
-.search-bar input {
-  border: none;
-  padding: 8px;
-  width: 150px;
-  border-radius: 5px 0 0 5px;
-  background-color: transparent;
-}
-
-.search-bar button {
-  background-color: transparent;
-  border: none;
-  padding: 8px;
-  border-radius: 0 5px 5px 0;
-  color: white;
-  transition: box-shadow 0.3s ease; /* Smooth transition for glow effect */
-}
-
-/* Glow effect on hover */
-.search-bar button:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Optional: Slight background tint on hover */
-    box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7); /* Yellow glowing effect */
-}
-
-.search-bar input:focus {
-  outline: none;
-}
-
-/* Navigation Links */
-.nav-links {
-  list-style-type: none;
-  display: flex;
-  gap: 10px;
-}
-
-.nav-links li {
-  position: relative;
-}
-
-.nav-links a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  padding: 10px 20px;
-  display: block;
-}
-
-.nav-links a:hover {
-  background-color: #a8c283;
-  border-radius: 5px;
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 40px;
-  left: 0;
-  background-color: #e0e1dd;
-  list-style: none;
-  border-radius: 5px;
-}
-
-.dropdown-menu li {
-  width: 150px;
-}
-
-.dropdown-menu a {
-  padding: 10px 20px;
-  display: block;
-}
-
-/* Show the dropdown on hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-
-}
-
-/* Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 5px;
-}
-
-.hamburger span {
-  background-color: rgb(255, 255, 255);
-  height: 3px;
-  width: 25px;
-  display: block;
-}
-
-/* Hide nav links by default on small screens */
-#toggle-nav {
-  display: none;
-}
-
-#toggle-nav:checked + label + .search-bar + .nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media screen and (max-width: 870px) {
-  .nav-links {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    background-color: #333;
-    padding: 15px 0;
-    align-items: center;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .nav-links li {
-    width: 100%;
-    text-align: center;
-  }
-
-  .dropdown-menu {
-    position: relative;
-    left: 0;
-  }
-
-  .search-bar {
-    display: flex;
-    width: 80%;
-    padding: 10px;
-    margin-top: 10px;
-  }
-
-  .search-bar input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px 0 0 5px;
-    border: none;
-  }
-
-  .search-bar button {
-    padding: 8px;
-    background-color: #555;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    color: white;
-    cursor: pointer;
-  }
-
-  .search-bar button:hover {
-    background-color: #747373;
-  }
-}
-
 /* Sidebar */
 .sidebar {
   width: 250px;
   background-color: #e0e0e0;
-  padding: 20px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
+
   align-items: center;
 }
 
@@ -277,7 +83,7 @@ nav {
 .main-content {
   flex-grow: 1;
   background-color: e0e1dd;
-  padding: 20px;
+  padding: 5px;
 }
 
 .section-title {
