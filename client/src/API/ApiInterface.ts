@@ -1,6 +1,6 @@
 
 
- interface StockInfo  {
+ export interface StockInfo  {
 
 name: string;
 description: string;
@@ -12,15 +12,33 @@ ticker:string;
 
 
 
-interface StockDetails{
+export interface StockDetails{
     // getting stock historical price 
+t:number;
+c:number;
+o:number;
+h:number;
+l:number;
+v:number;
+vw:number; 
+
+
+
 
     
 }
 
 
 
-interface StockNews{
+export interface StockNews{
+
+    name: string;
+    title:string;
+    author:string;
+    published: string | number;
+    article_url: string |number;
+    ticker: string
+    id: number 
 
     
 }
