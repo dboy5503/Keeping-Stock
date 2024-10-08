@@ -2,6 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "build": "npx tsc",
     "start": "npm run build && node dist/server.js --ignore client",
@@ -29,6 +30,8 @@
     "sequelize": "^6.37.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^5.0.0",
     "nodemon": "^3.1.7",
     "typescript": "^5.6.2"
   }
