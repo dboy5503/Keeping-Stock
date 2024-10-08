@@ -1,6 +1,7 @@
 import './App.css'
-import Header from './Componets/Header'
-import Home from './Pages/Home'
+import  {Footer}  from './Componets/Footer/Footer'
+import Header from './Componets/Header/Header'
+import Home from './Pages/HomePage/Home'
 
 
 
@@ -16,6 +17,7 @@ function App() {
     <>
     <Header/>
      <Home/>
+     <Footer/>
 
       
     

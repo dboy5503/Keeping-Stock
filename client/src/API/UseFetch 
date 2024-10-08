@@ -1,0 +1,54 @@
+import { useState, useEffect } from "react"
+
+
+ 
+
+const useFetch = (url,optionsStr) => {
+
+    const [data,setData] = useState(''); // this will be used to store the data
+    const [error,setError] = useState(''); // this will be used to store the error message
+    const [responseStatus, setStatus] = useState(0); // this will be used to store the response status
+    
+    useEffect(() => {
+        let success = true; // this will be used to check if the component is still mounted
+
+        const fetchData = async () => {
+
+            try {
+                const options = JSON.parse(optionsStr);
+                const response = await fetch(url, options);
+                
+                if (!response.ok) {
+                    setError(`Error`);
+                    setStatus(response.status);
+                    throw new Error(
+                      `${response.status} ${response.statusText}`
+                    );
+                }
+                const content = await response.json();
+
+                if(success){
+                    setData(content);
+                    setError('');
+                }   
+                setStatus(response.status);
+            }
+            catch(err) {
+                console.log("Error",error);
+            }
+          };
+      
+        fetchData();
+       
+        return () => {
+            success = false;
+            console.log('unmount');
+        };
+    
+      }, [url, optionsStr ,error]);
+
+    return {data,responseStatus};
+    
+};
+
+export default useFetch;
