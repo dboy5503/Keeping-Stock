@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="watch-list.css" rel="stylesheet" />
+    <title>Keeping Stock</title>
+  </head>
+  <header>
+    <nav class="navbar">
+      <!-- Logo -->
+      <div class="projectFont">Keeping Stock</div>
+
+      <!-- Hamburger menu (hidden by default) -->
+      <input type="checkbox" id="toggle-nav" />
+      <label for="toggle-nav" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <!-- Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Login</a></li>
+
+        <!-- Dropdown -->
+        <li class="dropdown">
+          <a href="#">My Stocks</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">List One</a></li>
+            <li><a href="#">List Two</a></li>
+            <li><a href="#">List Three</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#">News</a></li>
+
+        <!-- Search Bar inside Hamburger -->
+        <li class="search-bar">
+          <input type="text" placeholder="Search for a Stock" />
+          <button type="submit">🔍</button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="list-header">
+          <h3>My Lists</h3>
+          <div class="list-controls">
+            <button class="add-btn">+</button>
+            <button class="remove-btn">-</button>
+          </div>
+        </div>
+        <ul class="lists">
+          <li class="list-item active">Top Performers</li>
+          <li class="list-item">Buffets' Picks</li>
+          <li class="list-item">Crypto</li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h3 class="section-title">Top Performers</h3>
+        <div class="stock-list">
+          <div class="stock-item up">
+            <span>Stock Name</span>
+            <span class="arrow up-arrow">↗</span>
+          </div>
+          <div class="stock-item up">
+            <span>Stock Name</span>
+            <span class="arrow up-arrow">↗</span>
+          </div>
+          <div class="stock-item down">
+            <span>Stock Name</span>
+            <span class="arrow down-arrow">↘</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
