@@ -1,6 +1,6 @@
 
 
-export default function PrevData()
+// export default function PrevData()
 
 
 
