@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.css';
-import LineChart from '../../Componets/Chart/LineChart';
+// import LineChart from '../../Componets/Chart/LineChart';
 
 
 
@@ -32,13 +32,16 @@ export default function Home() {
                     <Card.Text>
                       Description
                     </Card.Text>
-                    <LineChart/>
+                   
                   </Card.Body>
                   <Card.Footer>
                     <small className="text-muted"></small>
+                    
                  
                   </Card.Footer>
+                  
                 </Card>
+                
                 <Card className='box-card'>
                   <Card.Img variant="top" src="holder.js/100px160" />
                   <Card.Body>

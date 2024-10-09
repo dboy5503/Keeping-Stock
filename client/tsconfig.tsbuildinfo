@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/api/apiinterface.ts","./src/api/stockdata.tsx","./src/componets/chart/linechart.tsx","./src/componets/footer/footer.tsx","./src/componets/header/header.tsx","./src/componets/prevdaydataofstock/prevdata.tsx","./src/pages/chart.tsx","./src/pages/homepage/home.tsx"],"version":"5.6.2"}
