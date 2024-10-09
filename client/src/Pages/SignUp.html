@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/stylesheets/header.css" rel="stylesheet" />
+    <link href="../Pages/SignUp.css" rel="stylesheet" />
+    <title>Create an Account</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <!-- Logo -->
+          <div class="projectFont">Keeping Stock</div>
+    
+          <!-- Hamburger menu (hidden by default) -->
+          <input type="checkbox" id="toggle-nav" />
+          <label for="toggle-nav" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+    
+          <!-- Nav Links -->
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Login</a></li>
+    
+            <!-- Dropdown -->
+            <li class="dropdown">
+              <a href="#">My Stocks</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">List One</a></li>
+                <li><a href="#">List Two</a></li>
+                <li><a href="#">List Three</a></li>
+              </ul>
+            </li>
+    
+            <li><a href="#">News</a></li>
+    
+            <!-- Search Bar inside Hamburger -->
+            <li class="search-bar">
+              <input type="text" placeholder="Search for a Stock" />
+              <button type="submit">🔍</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+          <!-- Sign-Up form -->
+    <main>
+        <div class="main">
+        <div class="signup-container">
+            <h2>Create an Account</h2>
+            <form class="signup-form">
+                <input type="text" placeholder="username" class="input-field">
+                <input type="email" placeholder="email" class="input-field">
+                <input type="password" placeholder="password" class="input-field">
+                <input type="password" placeholder="confirm password" class="input-field">
+                <button type="submit" class="signup-btn">Sign Up</button>
+                <p class="existing-user">Already have an account? <a href="login.html">Sign In</a></p>
+            </form>
+        </div>
+        </div>
+    </main>
+</body>
+</html>

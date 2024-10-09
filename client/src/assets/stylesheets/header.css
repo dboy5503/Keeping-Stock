@@ -61,7 +61,11 @@
   /* Glow effect on hover */
   .search-bar button:hover {
       background-color: rgba(255, 255, 255, 0.1); /* Optional: Slight background tint on hover */
-      box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7); /* Yellow glowing effect */
+      box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.989); /* White glowing effect */
+  }
+
+  .search-bar:hover {
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.989); /* White glowing effect */
   }
   
   .search-bar input:focus {
@@ -87,7 +91,7 @@
   }
   
   .nav-links a:hover {
-    background-color: #a8c283;
+    background-color: #3983a5ac;
     border-radius: 5px;
   }
   
