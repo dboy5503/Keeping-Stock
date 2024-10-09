@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../assets/stylesheets/header.css" rel="stylesheet" />
-    <link href="../assets/stylesheets/SignUp.css" rel="stylesheet" />
-    <title>Create an Account</title>
+    <link href="../assets/stylesheets/SavedStocks.css" rel="stylesheet" />
+    <title>Saved Stocks</title>
 </head>
 <body>
     <header>
         <nav class="navbar">
           <!-- Logo -->
           <div class="projectFont">Keeping Stock</div>
-    
+  
           <!-- Hamburger menu (hidden by default) -->
           <input type="checkbox" id="toggle-nav" />
           <label for="toggle-nav" class="hamburger">
@@ -20,12 +20,12 @@
             <span></span>
             <span></span>
           </label>
-    
+  
           <!-- Nav Links -->
           <ul class="nav-links">
             <li><a href="../Pages/Home.html">Home</a></li>
             <li><a href="../Pages/Login.html">Login</a></li>
-    
+  
             <!-- Dropdown -->
             <li class="dropdown">
               <a href="../Pages/SavedStocks.html">Saved Stocks</a>
@@ -35,9 +35,9 @@
                 <li><a href="#">List Three</a></li>
               </ul>
             </li>
-    
+  
             <li><a href="../Pages/News.html">News</a></li>
-    
+  
             <!-- Search Bar inside Hamburger -->
             <li class="search-bar">
               <input type="text" placeholder="Search for a Stock" />
@@ -46,21 +46,36 @@
           </ul>
         </nav>
       </header>
-          <!-- Sign-Up form -->
-    <main>
-        <div class="main">
-        <div class="signup-container">
-            <h2>Create an Account</h2>
-            <form class="signup-form">
-                <input type="text" placeholder="username" class="input-field">
-                <input type="email" placeholder="email" class="input-field">
-                <input type="password" placeholder="password" class="input-field">
-                <input type="password" placeholder="confirm password" class="input-field">
-                <button type="submit" class="signup-btn">Sign Up</button>
-                <p class="existing-user">Already have an account? <a href="../Pages/Login.html">Sign In</a></p>
+
+    <div class="container">
+        <h2>My Stock Lists</h2>
+
+        <!-- Input form for adding items -->
+        <form id="itemForm">
+            <input type="text" id="itemInput" placeholder="Add a new stock list" required>
+            <button type="submit">Add List</button>
+        </form>
+
+        <!-- The list of stock categories (lists) -->
+        <ul id="itemList">
+            <!-- List items will be appended here -->
+        </ul>
+
+        <!-- Section to display associated stocks -->
+        <div id="stockDetails">
+            <h3 id="selectedListTitle"></h3>
+            <ul id="stocksList">
+                <!-- Associated stocks will be shown here -->
+            </ul>
+
+             <!-- Input form to add new stocks to the selected list -->
+             <form id="stockForm">
+                <input type="text" id="stockInput" placeholder="Add a new stock" required>
+                <button type="submit">Add Stock</button>
             </form>
         </div>
-        </div>
-    </main>
+    </div>
+
+    <script src="SavedStocks.tsx"></script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    background-color: #e0e1dd;
+}
+
+/* Basic container styling */
+.container {
+    width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h2, h3 {
+    font-family: Arial, sans-serif;
+}
+
+#itemInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+}
+
+button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+/* Styling the list */
+#itemList, #stocksList {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#itemList li, #stocksList li {
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin-top: 5px;
+    text-align: left;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+#itemList li:hover, #stocksList li:hover {
+    background-color: #e0e0e0;
+}
+
+/* Hide stock details section initially */
+#stockDetails {
+    margin-top: 20px;
+    display: none;
+}
+
+/* Styling for the form to add stocks */
+#stockForm {
+    margin-top: 20px;
+}
+
+#stockInput {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+}
+
+#stocksList li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-stock {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
