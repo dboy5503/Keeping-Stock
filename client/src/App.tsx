@@ -1,7 +1,11 @@
 import './App.css'
+
 import  {Footer}  from './Componets/Footer/Footer'
 import Header from './Componets/Header/Header'
+import Chart from './Pages/Chart'
 import Home from './Pages/HomePage/Home'
+// import Chart from './Pages/chart'
+
 
 
 
@@ -18,6 +22,7 @@ function App() {
     <Header/>
      <Home/>
      <Footer/>
+    <Chart/>
 
       
     
