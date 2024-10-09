@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/stylesheets/header.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/stylesheets/SearchResults.css">
+    <title>Search Results</title>
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <!-- Logo -->
+          <div class="projectFont">Keeping Stock</div>
+  
+          <!-- Hamburger menu (hidden by default) -->
+          <input type="checkbox" id="toggle-nav" />
+          <label for="toggle-nav" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+  
+          <!-- Nav Links -->
+          <ul class="nav-links">
+            <li><a href="../Pages/Home.html">Home</a></li>
+            <li><a href="../Pages/Login.html">Login</a></li>
+  
+            <!-- Dropdown -->
+            <li class="dropdown">
+              <a href="../Pages/SavedStocks.html">Saved Stocks</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">List One</a></li>
+                <li><a href="#">List Two</a></li>
+                <li><a href="#">List Three</a></li>
+              </ul>
+            </li>
+  
+            <li><a href="../Pages/News.html">News</a></li>
+  
+            <!-- Search Bar inside Hamburger -->
+            <li class="search-bar">
+              <input type="text" placeholder="Search for a Stock" />
+              <button type="submit">🔍</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+  
+    <main>
+        <h2>Search Results</h2>
+        <div id="results">
+            <p>No results found.</p> <!-- Placeholder for results -->
+        </div>
+    </main>
+    <script src="SearchResults.tsx"></script> <!-- Link to your JavaScript -->
+</body>
+</html>

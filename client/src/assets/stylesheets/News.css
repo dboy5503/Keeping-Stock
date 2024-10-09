@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+html {
+    background-color: #e0e1dd;
+}
+
+/* News Section */
+.news-section {
+    margin-top: 20px;
+}
+
+.news-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-box h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.news-box p {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+/* Styling the news container for any loading state */
+#news-container {
+    padding: 10px;
+}
+
+/* Optional loading state */
+#news-container.loading:before {
+    content: 'Loading news...';
+    display: block;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0;
+}
