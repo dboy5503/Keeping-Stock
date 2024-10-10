@@ -10,6 +10,14 @@ import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
 import './App.css'
 
+<<<<<<< HEAD
+import  {Footer}  from './Componets/Footer/Footer'
+import Header from './Componets/Header/Header'
+
+import Home from './Pages/HomePage/Home'
+// import Chart from './Pages/chart'
+=======
+>>>>>>> main
 
 
 
@@ -21,6 +29,15 @@ import './App.css'
 
 const App: React.FC = () => {
   return (
+<<<<<<< HEAD
+    <>
+    <Header/>
+     <Home/>
+    
+     <Footer/>
+     
+   
+=======
     <Router>
     <Header />
     <Routes>
@@ -29,6 +46,7 @@ const App: React.FC = () => {
       <Route path="/news" element={<FinancialNews />} />
       <Route path="/saved-stocks" element={<SavedStocks />} />
     </Routes>
+>>>>>>> main
 
      <Footer />
     </Router>

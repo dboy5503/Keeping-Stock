@@ -19,6 +19,7 @@ export interface StockInfo {
   market_cap: number;
   ticker: string;
   market: string;
+  icon_url:any;
 }
 export interface StockNews {
 title:string;
@@ -46,16 +47,16 @@ class StockApi {
   constructor() {
     this.baseURL = process.env.API_BASE_URL || "";
     this.apiKey = process.env.API_KEY || "";
-    this.baseURL = process.env.SERVICE_G_API_BASE_URL|| "";
-    this.apiKey = process.env.SERVICE_G_API_KEY || "";
+    this.globalBaseURL = process.env.SERVICE_G_API_BASE_URL|| "";
+    this.globalApiKey = process.env.SERVICE_G_API_KEY || "";
   }
 
   async getAggregateDataByTicker(ticker: string) {
     try {
       const response = await fetch( // this will provide the historical data of a stock
-        `${this.baseURL}/aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-05?adjusted=true&sort=asc&limit=5000&apiKey=${this.apiKey}` 
+        `${this.baseURL}/aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-10?adjusted=true&sort=asc&apiKey=${this.apiKey}` 
       );
-      console.log(response);
+      // console.log(response);
       const stock = await response.json();
    
       return stock;
@@ -83,7 +84,7 @@ class StockApi {
         const response = await fetch( //alpha vantage api does not care if the stock is uppercase or lowercase!
           `${this.globalBaseURL}query?function=NEWS_SENTIMENT&tickers=${title}&apikey=${this.globalApiKey}`
         );
-        console.log(response);
+        // console.log(response);
         const stock = await response.json();
       
         return stock;
@@ -99,7 +100,7 @@ class StockApi {
           `${this.globalBaseURL}query?function=TOP_GAINERS_LOSERS&apikey=${this.globalApiKey}`
         );
         const stock = await response.json();
-          console.log(stock);
+          // console.log(stock);
           // return stock;
         } catch (err) {
           console.log("Error",err);

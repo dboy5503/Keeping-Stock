@@ -12,6 +12,11 @@ router.get('/ticker/:ticker_value', async (req:Request, res:Response) => {
 
 
 })
+router.get('/stockInfo/:ticker_value', async (req:Request, res:Response) => {
+
+    const results = await stockApi.getStockInfo(req.params.ticker_value)
+    res.json(results)
+})
 
 router.get('/news/:title_value', async (req:Request, res:Response) => {
 
@@ -25,10 +30,7 @@ router.get('/topGainAndLoss', async (_req:Request, res:Response) => {
     res.json(results)
 })
 
-router.get('/stockInfo/:ticker_value', async (req:Request, res:Response) => {
 
-    const results = await stockApi.getStockInfo(req.params.ticker_value)
-    res.json(results)
-})
+
 export default router 
 
