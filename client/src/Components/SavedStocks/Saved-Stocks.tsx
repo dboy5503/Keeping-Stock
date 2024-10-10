@@ -16,7 +16,7 @@ const StockList: React.FC = () => {
 
     const [savedStocks, setSavedStocks] = useState<Stock[]>([]);
 
-    /* Load saved stocks from local storage on component mount
+    /* // Load saved stocks from local storage on component mount
     useEffect(() => {
         const saved = localStorage.getItem('savedStocks');
         if (saved) {
