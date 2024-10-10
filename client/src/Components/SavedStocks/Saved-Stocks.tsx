@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './SavedStocks.css';
+import EditableTitle from './Edit-Title.tsx';
 
 interface Stock {
     symbol: string;
     name: string;
 }
 
+// replace the strings 'AAPL', 'GOOGL', 'AMZN', 'TSLA' with the actual stock data
 const StockList: React.FC = () => {
-    const [stocks, setStocks] = useState<Stock[]>([
+    const [stocks] = useState<Stock[]>([
         { symbol: 'AAPL', name: 'Apple' },
         { symbol: 'GOOGL', name: 'Google' },
         { symbol: 'AMZN', name: 'Amazon' },
@@ -16,14 +18,15 @@ const StockList: React.FC = () => {
 
     const [savedStocks, setSavedStocks] = useState<Stock[]>([]);
 
-    /* // Load saved stocks from local storage on component mount
+    // Load saved stocks from local storage on component mount
     useEffect(() => {
         const saved = localStorage.getItem('savedStocks');
         if (saved) {
             setSavedStocks(JSON.parse(saved));
         }
-    }, []); */
+    }, []);
 
+    /* // Fetch stocks from an API on component mount
     useEffect(() => {
         const fetchStocks = async () => {
             try {
@@ -36,7 +39,7 @@ const StockList: React.FC = () => {
         };
     
         fetchStocks();
-    }, []);
+    }, []); */
 
     // Save stocks to local storage whenever the savedStocks state changes
     useEffect(() => {
@@ -61,9 +64,18 @@ const StockList: React.FC = () => {
         return savedStocks.some((stock) => stock.symbol === symbol);
     };
 
+    // Edit the title of the stock list
+    const [title, setTitle] = useState<string>('My Stock List');
+
+    const handleSave = (newTitle: string) => {
+        setTitle(newTitle);
+    };
+
     return (
         <div className="container">
-            <h2>Available Stocks</h2>
+            <div>
+                <EditableTitle initialTitle={title} onSave={handleSave} />
+            </div>
             <ul>
                 {stocks.map((stock) => (
                     <li key={stock.symbol}>
