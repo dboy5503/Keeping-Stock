@@ -19,13 +19,12 @@ const Header : React.FC = () => {
   
           {/* Nav Links */}
           <ul>
-            <li><Link to="../Pages/Home">Home</Link></li>
-            <li><Link to="../Pages/Home">Home</Link></li>
-            <li><Link to="../Pages/Login">Login</Link></li>
+            <li><Link to="./Components/HomePage/Home">Home</Link></li>
+            <li><Link to="./Components/Login/Login">Login</Link></li>
   
             {/* Dropdown */}
             <li className="dropdown">
-              <a href="../Pages/SavedStocks.html">Saved Stocks</a>
+              <a href="./Components/SavedStocks/Saved-Stocks">Saved Stocks</a>
               <ul className="dropdown-menu">
                 <li><Link to="#">List One</Link></li>
                 <li><Link to="#">List Two</Link></li>
@@ -33,7 +32,7 @@ const Header : React.FC = () => {
               </ul>
             </li>
   
-            <li><Link to="../Pages/News.html">News</Link></li>
+            <li><Link to="./Components/News/News">News</Link></li>
   
             {/* Search Bar inside Hamburger */}
             <li className="search-bar">
