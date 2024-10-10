@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './SearchResults.css';
 
 interface Stock {
     symbol: string;
@@ -29,8 +30,10 @@ const SearchResults: React.FC = () => {
             console.error(err);
         }
     };
+    
 
     return (
+        // add search bar styling from header.css 
         <div className="search-results">
             <header>
                 <h1>Search for Stocks</h1>
