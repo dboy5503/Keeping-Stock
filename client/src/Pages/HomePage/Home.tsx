@@ -1,8 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.css';
-// import LineChart from '../../Componets/Chart/LineChart';
-
+import LineChart,{LineChart2, LineChart3} from '../../Componets/Chart/LineChart';
 
 
 
@@ -28,24 +27,23 @@ export default function Home() {
                 <Card className='box-card'>
                   <Card.Img variant="top" src="holder.js/100px160" />
                   <Card.Body>
-                    <Card.Title>Apple</Card.Title>
+                    <Card.Title className='title'>SPY</Card.Title>
                     <Card.Text>
                       Description
                     </Card.Text>
                    
                   </Card.Body>
                   <Card.Footer>
-                    <small className="text-muted"></small>
-                    
-                 
+                  <small className="text-muted">Stock data on Chart </small>
                   </Card.Footer>
+                  <LineChart/>
                   
                 </Card>
                 
                 <Card className='box-card'>
                   <Card.Img variant="top" src="holder.js/100px160" />
                   <Card.Body>
-                    <Card.Title>Meta</Card.Title>
+                    <Card.Title className='title'>QQQ</Card.Title>
                     <Card.Text>
                       Description 
                     </Card.Text>
@@ -53,18 +51,20 @@ export default function Home() {
                   <Card.Footer>
                     <small className="text-muted">Stock data on Chart </small>
                   </Card.Footer>
+                  <LineChart2/>
                 </Card>
                 <Card className='box-card'>
                   <Card.Img variant="top" src="holder.js/100px160" />
                   <Card.Body>
-                    <Card.Title>Tesla</Card.Title>
+                    <Card.Title className='title'>DIA</Card.Title>
                     <Card.Text>
                       Description 
                     </Card.Text>
                   </Card.Body>
                   <Card.Footer>
-                    <small className="text-muted">Stock data on Chart</small>
+                  <small className="text-muted">Stock data on Chart </small>
                   </Card.Footer>
+                  <LineChart3/>
                 </Card>
               </CardGroup>
               </div>

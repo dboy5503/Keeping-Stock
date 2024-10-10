@@ -4,21 +4,24 @@ import {
   Chart as ChartJS,
   LineElement,
   PointElement,
+  CategoryScale, // x-axis
+  LinearScale, // y-axis
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+import { StockDetails } from "../../API/ApiInterface";
+import "./LineChartStyle.css";
+
+ChartJS.register(
+  LineElement,
+  PointElement, //
   CategoryScale,
   LinearScale,
   Title,
   Tooltip,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
-import { StockDetails } from "../../API/ApiInterface";
-
-ChartJS.register(
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Title,
-  Tooltip
+  Legend
 );
 
 export default function LineChart() {
@@ -30,31 +33,82 @@ export default function LineChart() {
       const data = await response.json();
       console.log(data);
       setChartData(data.results);
+      localStorage.setItem("AaplChartData", JSON.stringify(data.results));
     } catch (err) {
       console.log("Error", err);
     }
   };
   useEffect(() => {
-    FetchChartData();
+    // Check if there's any data in localStorage
+    const storedData = localStorage.getItem("AaplChartData");
+    if (storedData) {
+      setChartData(JSON.parse(storedData));
+    } else {
+      // If there's no data in localStorage, fetch data from the API
+      FetchChartData();
+    }
   }, []);
 
   //labels for the x-axis to show the date
   // datasets for the y-axis to show the stock price
 
   const lineChartData = {
-    labels: chartData.map((stock: StockDetails) => stock.t), // the labels for the x-axis will show the date
+    labels: chartData.map((stock: StockDetails) => {
+      const date = new Date(stock.t);
+      return date.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+
+        // the labels for the x-axis will show the date
+        //convert timestamp to readable date
+      });
+    }),
+
     datasets: [
       {
-        label: "Close Price", // the label for the y-axis will show the stock price
+        label: "AAPL 2024 CLOSING PRICE DATA ", // the label for the y-axis will show the stock price
         data: chartData.map((stock: StockDetails) => stock.c), //the datasets for the y-axis will show the stock price
-        fill: false,
-        borderColor: "rgba(75, 192, 192, 1) solid 50",
+        fill: false, //this will fill the area under the line chart with color
+        borderColor: "blue",
+        borderWidth: 1,
+        pointRadius: 0,
+        pointHitRadius: 10,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "blue",
+        pointHoverBorderColor: "blue",
+        pointHoverBorderWidth: 2,
+        pointBackgroundColor: "blue",
       },
     ],
   };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: true,
+      tooltip: {
+        padding: 10,
+      },
+    },
+
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Price",
+        },
+      },
+    },
+  };
   return (
-    <div className="Aapl">
-      <Line data={lineChartData} width={500} height={100} />
+    <div className="aapl">
+      <Line data={lineChartData} options={options} />
     </div>
   );
 }
@@ -68,32 +122,87 @@ export function LineChart2() {
       const data = await response.json();
       console.log(data);
       setChartData(data.results);
+
+      localStorage.setItem("MetaChartData", JSON.stringify(data.results));
     } catch (err) {
       console.log("Error", err);
     }
   };
+
   useEffect(() => {
-    FetchChartData();
+    const storedData = localStorage.getItem("MetaChartData");
+    if (storedData) {
+      setChartData(JSON.parse(storedData));
+    } else {
+      // If there's no data in localStorage, fetch data from the API
+      FetchChartData();
+    }
+    // FetchChartData every 10 minutes
+    // const timer = setInterval(() => {
+    //   FetchChartData();
+    // }, 10 * 60 * 1000); // 10 minutes in milliseconds
+
+    // // Clear the timer when the component unmounts
+    // return () => clearInterval(timer);
   }, []);
 
   //labels for the x-axis to show the date
   // datasets for the y-axis to show the stock price
 
   const lineChartData = {
-    labels: chartData.map((stock: StockDetails) => stock.t), // the labels for the x-axis will show the date
+    labels: chartData.map((stock: StockDetails) => {
+      const date = new Date(stock.t);
+      return date.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+
+        // the labels for the x-axis will show the date
+        //convert timestamp to readable date
+      });
+    }),
     datasets: [
       {
-        label: "Close Price", // the label for the y-axis will show the stock price
+        label: "META 2024 CLOSING PRICE DATA", // the label for the y-axis will show the stock price
         data: chartData.map((stock: StockDetails) => stock.c), //the datasets for the y-axis will show the stock price
         fill: false,
-        borderColor: "rgba(75, 192, 192, 1) solid 50",
+        borderColor: "blue",
+        borderWidth: 1,
+        pointRadius: 0,
+        pointHitRadius: 10,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "blue",
+        pointHoverBorderColor: "blue",
+        pointHoverBorderWidth: 2,
+        pointBackgroundColor: "blue",
       },
     ],
+  };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: true,
+    },
+
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Price",
+        },
+      },
+    },
   };
 
   return (
     <div className="Meta">
-      <Line data={lineChartData} width={500} height={100} />
+      <Line data={lineChartData} options={options} />
     </div>
   );
 }
@@ -103,34 +212,86 @@ export function LineChart3() {
 
   const FetchChartData = async () => {
     try {
-      const response = await fetch("/api/stocks/ticker/TSLA");
+      const response = await fetch("/api/stocks/ticker/NVDA");
       const data = await response.json();
       console.log(data);
       setChartData(data.results);
+      localStorage.setItem("NVDAChartData", JSON.stringify(data.results));
     } catch (err) {
       console.log("Error", err);
     }
   };
   useEffect(() => {
-    FetchChartData();
+    const storedData = localStorage.getItem("NVDAChartData");
+    if (storedData) {
+      setChartData(JSON.parse(storedData));
+    } else {
+      // If there's no data in localStorage, fetch data from the API
+      FetchChartData();
+    }
+    // FetchChartData every 10 minutes
+    // const timer = setInterval(() => {
+    //   FetchChartData();
+    // }, 10 * 60 * 1000); // 10 minutes in milliseconds
+
+    // // Clear the timer when the component unmounts
+    // return () => clearInterval(timer);
   }, []);
 
   const lineChartData = {
-    labels: chartData.map((stock: StockDetails) => stock.t),
+    labels: chartData.map((stock: StockDetails) => {
+      const date = new Date(stock.t);
+      return date.toLocaleString("en-US", {
+        month: "short",
+        day: "numeric",
+
+        // the labels for the x-axis will show the date
+        //convert timestamp to readable date
+      });
+    }),
     datasets: [
       {
-        label: "Close Price",
+        label: "NVDA 2024 CLOSING PRICE DATA",
         data: chartData.map((stock: StockDetails) => stock.c),
         fill: false,
-        borderColor: "rgba(75, 192, 192, 1) solid 50",
+        borderColor: "blue",
+        borderWidth: 1,
+        pointRadius: 0,
+        pointHitRadius: 10,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: "blue",
+        pointHoverBorderColor: "blue",
+        pointHoverBorderWidth: 2,
+        pointBackgroundColor: "blue",
       },
     ],
   };
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: true,
+    },
+
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Price",
+        },
+      },
+    },
+  };
 
   return (
-    <div className="TSLA">
-      <Line data={lineChartData} width={500} height={100} />
+    <div className="NVDA">
+      <Line data={lineChartData} options={options} />
     </div>
   );
 }
-

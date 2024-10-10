@@ -1,0 +1,55 @@
+
+
+.aapl{
+   height: 50%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.Meta{
+    height: 50%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.NVDA{
+    height: 50%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.NVDA:hover{
+    background-color: #68876f;
+    cursor: pointer;
+}
+
+.aapl:hover{
+    background-color: #976060;
+    cursor: pointer;
+}
+
+.Meta:hover{
+    background-color: #989b57;
+    cursor: pointer;
+
+}
