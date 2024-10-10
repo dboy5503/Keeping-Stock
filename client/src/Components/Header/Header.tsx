@@ -1,43 +1,47 @@
-import './Header.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
 
-
-export default function Header() {
+const Header : React.FC = () => {
     return (
-
         <header>
-            <h1 className="projectFont">Keeping Stock</h1>
-            <nav className="navigation">
-                <ul >
-                    <li>
-                        <a href="#home">Home</a>
-                        <li>
-                            <a href="#login">Sign In</a>
-                        </li>
-                        <li>
-                            <a href="#news">News</a>
-                        </li>
-                        <li id="options">
-                            <a href="#watchlist">My Watchlists</a>
-                            <ul className="subnav">
-                                <li><a href="#list-one">List 1</a></li>
-                                <li><a href="#list-two">List 2</a></li>
-                                <li><a href="#list-three">List 3</a></li>
-                                <li><a href="#list-four">View All</a></li>
-                            </ul>
-                        </li>
-                        <li id="search">
-                            <form action="" method="get">
-                                <input type="text" name="search_text" id="search_text" placeholder="Search for a stock" />
-                                <button type="button" name="search_button" id="search_button">Go</button>
-                            </form>
-                        </li>
-                    </li>
-                </ul>
-            </nav>
+        <nav className="navbar">
+          {/* Logo */}
+          <div className="projectFont">Keeping Stock</div>
+  
+          {/* Hamburger menu (hidden by default)*/}
+          <input type="checkbox" id="toggle-nav" />
+          <label htmlFor="toggle-nav" className="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+  
+          {/* Nav Links */}
+          <ul>
+            <li><Link to="./Components/HomePage/Home">Home</Link></li>
+            <li><Link to="./Components/Login/Login">Login</Link></li>
+  
+            {/* Dropdown */}
+            <li className="dropdown">
+              <a href="./Components/SavedStocks/Saved-Stocks">Saved Stocks</a>
+              <ul className="dropdown-menu">
+                <li><Link to="#">List One</Link></li>
+                <li><Link to="#">List Two</Link></li>
+                <li><Link to="#">List Three</Link></li>
+              </ul>
+            </li>
+  
+            <li><Link to="./Components/News/News">News</Link></li>
+  
+            {/* Search Bar inside Hamburger */}
+            <li className="search-bar">
+              <input type="text" placeholder="Search for a Stock" />
+              <button type="submit">🔍</button>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    )};
 
-        </header>
-
-    )
-
-
-}
+export default Header;

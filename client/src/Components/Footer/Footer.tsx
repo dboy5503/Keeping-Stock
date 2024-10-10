@@ -1,11 +1,20 @@
-import './Footer.css';
-export function Footer() {
+import React from "react";
+import './Footer.css'
 
-    return (
-        <footer className="footer">
-            <div className="container">
-                <span className="text-white">All Rights Reserved 2021 @Stocks</span>
-            </div>
-        </footer>
-    )
-}
+const Footer: React.FC = () => {
+  return (
+    <footer>
+      <div className="footer-content">
+        <div className="footer-section about">
+          <h1 className="logo-text">Copyright 2024 | Keeping Stock</h1>
+          <p>
+            Keeping Stock is a web application that allows users to search for
+            and save their favorite stocks.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
