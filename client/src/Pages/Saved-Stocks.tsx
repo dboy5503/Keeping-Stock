@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './SavedStocks.css';
-import EditableTitle from './Edit-Title.tsx';
+import EditableTitle from '../Components/EditableTitle/Edit-Title';
 
 interface Stock {
     symbol: string;

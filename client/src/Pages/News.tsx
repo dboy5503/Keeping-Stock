@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './News.css';
 
-const FinancialNews: React.FC = () => {
+const News: React.FC = () => {
     interface Article {
         title: string;
         description: string;
@@ -18,7 +19,7 @@ const FinancialNews: React.FC = () => {
                 const response = await axios.get('https://newsapi.org/v2/everything', {
                     params: {
                         q: 'finance',
-                        apiKey: 'YOUR_API_KEY', // Replace with your NewsAPI key or any other service key
+                        apiKey: process.env.API_Key,
                     }
                 });
                 setNews(response.data.articles);
@@ -55,4 +56,4 @@ const FinancialNews: React.FC = () => {
     );
 };
 
-export default FinancialNews;
+export default News;
