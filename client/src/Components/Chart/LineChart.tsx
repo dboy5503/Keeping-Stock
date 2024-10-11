@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartOptions,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { StockDetails } from "../../API/ApiInterface";
@@ -81,11 +82,14 @@ export default function LineChart() {
       },
     ],
   };
-  const options = {
+  const options: ChartOptions <'line'> = {
     responsive: true,
     maintainAspectRatio: false,
+    
     plugins: {
-      legend: true,
+      legend: {
+        display: true,
+      },
       tooltip: {
         padding: 10,
       },
@@ -177,32 +181,32 @@ export function LineChart2() {
       },
     ],
   };
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: true,
-    },
+  // const options = {
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  //   plugins: {
+  //     legend: true,
+  //   },
 
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Date",
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Price",
-        },
-      },
-    },
-  };
+  //   scales: {
+  //     x: {
+  //       title: {
+  //         display: true,
+  //         text: "Date",
+  //       },
+  //     },
+  //     y: {
+  //       title: {
+  //         display: true,
+  //         text: "Price",
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <div className="Meta">
-      <Line data={lineChartData} options={options} />
+      <Line data={lineChartData} />
     </div>
   );
 }
@@ -266,32 +270,32 @@ export function LineChart3() {
       },
     ],
   };
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: true,
-    },
+  // const options = {
+  //   responsive: true,
+  //   maintainAspectRatio: false,
+  //   plugins: {
+  //     legend: true,
+  //   },
 
-    scales: {
-      x: {
-        title: {
-          display: true,
-          text: "Date",
-        },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "Price",
-        },
-      },
-    },
-  };
+  //   scales: {
+  //     x: {
+  //       title: {
+  //         display: true,
+  //         text: "Date",
+  //       },
+  //     },
+  //     y: {
+  //       title: {
+  //         display: true,
+  //         text: "Price",
+  //       },
+  //     },
+  //   },
+  // };
 
   return (
     <div className="NVDA">
-      <Line data={lineChartData} options={options} />
+      <Line data={lineChartData} />
     </div>
   );
 }

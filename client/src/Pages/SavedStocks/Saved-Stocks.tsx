@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SavedStocks.css';
+import '../../assets/stylesheets/SavedStocks.css';
 import EditableTitle from './Edit-Title.tsx';
 
 interface Stock {
