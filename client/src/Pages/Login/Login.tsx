@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.css';
+import '../../assets/stylesheets/Login.css';
+import auth from '../../utils/auth'
 
 interface LoginFormData {
   email: string;
@@ -41,6 +42,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     if (validateForm()) {
       console.log('Login form data:', formData);
+      auth.login('')
       // You can now send formData to an API for authentication
     }
   };

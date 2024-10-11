@@ -1,7 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.css';
-import LineChart,{LineChart2, LineChart3} from '../../Componets/Chart/LineChart';
+import LineChart, { LineChart2, LineChart3 } from '../../Components/Chart/LineChart';
+
+
 
 
 
