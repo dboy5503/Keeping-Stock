@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const FinancialNews: React.FC = () => {
     interface Article {
@@ -15,13 +15,11 @@ const FinancialNews: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get('https://newsapi.org/v2/everything', {
-                    params: {
-                        q: 'finance',
-                        apiKey: 'YOUR_API_KEY', // Replace with your NewsAPI key or any other service key
-                    }
-                });
-                setNews(response.data.articles);
+                const response = await fetch("/api/stocks/financeNews");
+                console.log(response);
+                const data = await response.json();
+               
+                setNews(data.articles);
                 setLoading(false);
             } catch (err) {
                 setError((err as any).message);

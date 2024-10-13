@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/Login.css';
-import auth from '../../utils/auth'
+import Auth from '../../utils/auth'
+import {login} from '../../API/authAPI';
+
 
 interface LoginFormData {
   email: string;
@@ -38,12 +40,22 @@ const Login: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log('Login form data:', formData);
-      auth.login('')
-      // You can now send formData to an API for authentication
+    if (validateForm()) 
+      try{
+    const data = await login(formData); // this will be the response from the API when the user logs in
+    // If login is successful, call Auth.login to store the token in localStorage
+    Auth.login(data.token) 
+    console.log('Login successful:', data);
+      
+      
+      }catch (err){
+        console.log('Error from user login: ', err);
+       
+      
+      
+    
     }
   };
 

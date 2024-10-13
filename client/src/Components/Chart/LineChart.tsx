@@ -12,7 +12,7 @@ import {
   ChartOptions,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { StockDetails } from "../../API/ApiInterface";
+import { StockDetails } from "../../API/ApiInterface.js";
 import "./LineChartStyle.css";
 
 ChartJS.register(
@@ -32,7 +32,6 @@ export default function LineChart() {
     try {
       const response = await fetch("/api/stocks/ticker/AAPL");
       const data = await response.json();
-      console.log(data);
       setChartData(data.results);
       localStorage.setItem("AaplChartData", JSON.stringify(data.results));
     } catch (err) {
@@ -181,32 +180,37 @@ export function LineChart2() {
       },
     ],
   };
-  // const options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   plugins: {
-  //     legend: true,
-  //   },
+  const options: ChartOptions <'line'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+      },
+      tooltip: {
+        padding: 10,
+      },
+    },
 
-  //   scales: {
-  //     x: {
-  //       title: {
-  //         display: true,
-  //         text: "Date",
-  //       },
-  //     },
-  //     y: {
-  //       title: {
-  //         display: true,
-  //         text: "Price",
-  //       },
-  //     },
-  //   },
-  // };
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Price",
+        },
+      },
+    },
+  };
 
   return (
     <div className="Meta">
-      <Line data={lineChartData} />
+      <Line data={lineChartData} options={options}/>
     </div>
   );
 }
@@ -270,32 +274,36 @@ export function LineChart3() {
       },
     ],
   };
-  // const options = {
-  //   responsive: true,
-  //   maintainAspectRatio: false,
-  //   plugins: {
-  //     legend: true,
-  //   },
-
-  //   scales: {
-  //     x: {
-  //       title: {
-  //         display: true,
-  //         text: "Date",
-  //       },
-  //     },
-  //     y: {
-  //       title: {
-  //         display: true,
-  //         text: "Price",
-  //       },
-  //     },
-  //   },
-  // };
+  const options: ChartOptions <'line'> = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+      },
+      tooltip: {
+        padding: 10,
+      },
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Date",
+        },
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Price",
+        },
+      },
+    },
+  };
 
   return (
     <div className="NVDA">
-      <Line data={lineChartData} />
+      <Line data={lineChartData} options={options} />
     </div>
   );
 }
