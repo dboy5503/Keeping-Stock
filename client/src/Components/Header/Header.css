@@ -3,7 +3,7 @@
     padding: 0;
  }
 
- html {
+ .htmlFor {
    background-color: #e0e1dd;
  }
 
@@ -14,14 +14,14 @@
 
  .projectFont {
       font-family: projectFont;
-      font-size: 35px;
+      font-size: 50px;
       color: #137aa8;
       margin: 20px 0 0 0;
       padding-left: 20px;
       background-color: #e0e1dd;
  }
 
- .navigation {
+ .navBar {
    position: sticky;
    top: 0; /* Stick the nav bar to the top */
     background: #e0e1dd;
@@ -62,7 +62,7 @@
  }
  
  
- .subnav {
+ .dropdown {
     visibility: hidden;
     position: absolute;
     top: 110%;
@@ -75,12 +75,12 @@
  }
  
  
- .subnav li {
+ .dropdown li {
     float: none;
  }
  
  
- .subnav li a {
+ .dropdown li a {
     border-bottom: 1px solid #e0e1dd;
  }
  
@@ -92,7 +92,7 @@
  }
  
  
- #search {
+ #search-bar {
    display: inline-flex;
    flex: 1 1 300px;
    border-radius: 10px;

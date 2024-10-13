@@ -1,8 +1,10 @@
 import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
+
 interface JwtPayload {
-  username: string;
+  email: string;
+
 }
 
 export const authenticateToken = (
@@ -11,6 +13,7 @@ export const authenticateToken = (
   next: NextFunction
 ) => {
   const authHeader = req.headers.authorization;
+  // what headers are we getting from the client? We are getting the authorization header which looks like this Authorization: Bearer token
 
   if (authHeader) {
     const token = authHeader.split(' ')[1];

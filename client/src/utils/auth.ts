@@ -18,7 +18,7 @@ interface UserAttributes {
 
   loggedIn() {
     const token = this.getToken();
-    return !!token && !this.isTokenExpired(token);
+    return !!token && !this.isTokenExpired(token); // this is 
   }
 
   isTokenExpired(token: string) {
@@ -31,7 +31,7 @@ interface UserAttributes {
         // If the token is expired, return true indicating that it is expired.
         return true;
       }
-    } catch (err) {
+    }catch (err) {
       // If decoding fails (e.g., due to an invalid token format), catch the error and return false.
       return false;
     }

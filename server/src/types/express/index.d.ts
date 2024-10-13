@@ -1,7 +1,7 @@
 declare namespace Express {
   interface Request {
     user?: {
-      username: string;
+      email: string; // this is the payload of the JWT token we are sending back to the client
     };
   }
 }

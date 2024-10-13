@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SignUp.css';
+import '../../assets/stylesheets/SignUp.css';
 import { Link } from 'react-router-dom';
 
 interface SignUpFormData {
@@ -46,8 +46,14 @@ const SignUp: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
+      //store in local storage
+      localStorage.setItem('user', formData.email,);
       console.log('Form submitted successfully:', formData);
       // You could now send the formData to an API for signup
+      
+      
+
+      
     }
   };
 

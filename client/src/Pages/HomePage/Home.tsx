@@ -3,6 +3,8 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import './Home.css';
 import LineChart, { LineChart2, LineChart3 } from '../../Components/Chart/LineChart';
 
+import { useEffect, useState } from 'react';
+
 
 
 
@@ -11,11 +13,31 @@ import LineChart, { LineChart2, LineChart3 } from '../../Components/Chart/LineCh
 
     
 export default function Home() {
+  const [stockInfo, setStockInfo] = useState({ ticker: '', name: '', description: '', market_cap: '' });
+  const fetchStockInfo = async () => {
+    try {
+      const response = await fetch("/api/stocks/stockInfo/AAPL");
+      const data = await response.json();
+      const { ticker, name, description, market_cap } = data.results;
+      console.log(data);
+      localStorage.setItem("AaplStockInfo", JSON.stringify({ ticker, name, description, market_cap }));
+      setStockInfo({ ticker, name, description, market_cap });
+    } catch (err) {
+      console.log("Error", err);
+    }
+  };
 
-// call the function for each stock 
+  useEffect(() => {
+    const storedData = localStorage.getItem("AaplStockInfo");
+    if (storedData) {
+      setStockInfo(JSON.parse(storedData));
+    } else {
+      fetchStockInfo();
+    }
+  }, []);
 
-
-
+  
+  
 
 
 
@@ -26,26 +48,28 @@ export default function Home() {
               <div>
             
               <CardGroup className='container'>
+                
                 <Card className='box-card'>
-                  <Card.Img variant="top" src="holder.js/100px160" />
+                  
+                  
                   <Card.Body>
-                    <Card.Title className='title'>SPY</Card.Title>
+                    <Card.Title className='title'>AAPL {stockInfo.ticker}</Card.Title>
                     <Card.Text>
-                      Description
+                      Description {stockInfo.description}
                     </Card.Text>
                    
                   </Card.Body>
                   <Card.Footer>
-                  <small className="text-muted">Stock data on Chart </small>
+                  <small className="text-muted">Market Cap </small>
                   </Card.Footer>
                   <LineChart/>
                   
                 </Card>
                 
                 <Card className='box-card'>
-                  <Card.Img variant="top" src="holder.js/100px160" />
+                 
                   <Card.Body>
-                    <Card.Title className='title'>QQQ</Card.Title>
+                    <Card.Title className='title'>META</Card.Title>
                     <Card.Text>
                       Description 
                     </Card.Text>
@@ -56,9 +80,9 @@ export default function Home() {
                   <LineChart2/>
                 </Card>
                 <Card className='box-card'>
-                  <Card.Img variant="top" src="holder.js/100px160" />
+                  
                   <Card.Body>
-                    <Card.Title className='title'>DIA</Card.Title>
+                    <Card.Title className='title'>NVDA</Card.Title>
                     <Card.Text>
                       Description 
                     </Card.Text>

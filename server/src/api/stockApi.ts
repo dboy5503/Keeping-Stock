@@ -56,7 +56,7 @@ class StockApi {
       const response = await fetch( // this will provide the historical data of a stock
         `${this.baseURL}/aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-10?adjusted=true&sort=asc&apiKey=${this.apiKey}` 
       );
-      // console.log(response);
+      console.log(response);
       const stock = await response.json();
    
       return stock;
@@ -93,6 +93,21 @@ class StockApi {
         throw err;
       }
     }
+
+    async getFinanceNews() { // this will provide the most up to date news on a stock 
+      try {
+        const response = await fetch( //alpha vantage api does not care if the stock is uppercase or lowercase!
+          `${this.globalBaseURL}query?function=NEWS_SENTIMENT&topics=finance&apikey=${this.globalApiKey}`
+        );
+        console.log(response);
+        const stock = await response.json();
+      
+        return stock;
+      } catch (err) {
+        console.log("Error",err);
+        throw err;
+      }
+    }
   
     async getTopStockGainAndLosses (){
       try{
@@ -109,7 +124,8 @@ class StockApi {
       }
   
     }
-  
+
+   
   
   
 
