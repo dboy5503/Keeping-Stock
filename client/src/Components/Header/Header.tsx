@@ -19,20 +19,16 @@ const Header : React.FC = () => {
   
           {/* Nav Links */}
           <ul>
-            <li><Link to="./Pages/Home">Home</Link></li>
-            <li><Link to="./Pages/Login">Login</Link></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">Login</Link></li>
   
             {/* Dropdown */}
             <li className="dropdown">
-              <a href="./Pages/Saved-Stocks">Saved Stocks</a>
-              <ul className="dropdown-menu">
-                <li><Link to="#">List One</Link></li>
-                <li><Link to="#">List Two</Link></li>
-                <li><Link to="#">List Three</Link></li>
-              </ul>
+              <Link to="/saved-stocks">Saved Stocks</Link>
+              
             </li>
   
-            <li><Link to="./Pages/News">News</Link></li>
+            <li><Link to="/News">News</Link></li>
   
             {/* Search Bar inside Hamburger */}
             <li className="search-bar">
