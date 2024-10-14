@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
+import AuthService from '../../utils/auth'
+
 
 const FinancialNews: React.FC = () => {
     interface Article {
@@ -15,7 +17,11 @@ const FinancialNews: React.FC = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch("/api/stocks/financeNews");
+                const token = AuthService.getToken()  // getting the token from the backend and attaching for all future request
+                const response = await fetch("/api/stocks/financeNews",
+                {headers: {Authorization: `Bearer ${token}`}}
+                );
+                
                 console.log(response);
                 const data = await response.json();
                

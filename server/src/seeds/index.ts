@@ -1,14 +1,14 @@
 import { seedUsers } from './user-seeds.js';
-import sequelize from '../../server/src/config/connection.js';
+import sequelize from '../config/connection.js';
 
 const seedAll = async (): Promise<void> => {
   try {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
-    
+
     await seedUsers();
     console.log('\n----- USERS SEEDED -----\n');
-    
+
     process.exit(0);
   } catch (error) {
     console.error('Error seeding database:', error);

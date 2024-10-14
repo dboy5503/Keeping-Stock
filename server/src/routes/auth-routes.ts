@@ -1,9 +1,10 @@
-import { Router, type Request, type Response, RequestHandler } from 'express';
-import { User } from '../models/user';
+
+import { User } from '../models/index.js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
+import { Router, type Request, type Response, RequestHandler } from 'express';
 
-export const login: RequestHandler = async (req, res) => {
+export const login: RequestHandler = async (req:Request, res:Response) => {
   const { email, password } = req.body; 
 
   const user = await User.findOne({
@@ -30,6 +31,6 @@ export const login: RequestHandler = async (req, res) => {
 const router = Router();
 
 // Login a user - /api/auth/login
-router.post('/login');
+router.post('/login', login);
 
 export default router;

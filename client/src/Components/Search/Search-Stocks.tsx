@@ -16,7 +16,7 @@ const SearchResults: React.FC = () => {
     // Function to handle search action
     const handleSearch = async () => {
         try {
-            const response = await fetch(`https://api.example.com/stocks?query=${searchInput}`); // Replace with your API
+            const response = await fetch(`/api/stocks/`); // Replace with your API
             const data = await response.json();
             if (data && data.length > 0) {
                 setResults(data); // Set the results based on API response
