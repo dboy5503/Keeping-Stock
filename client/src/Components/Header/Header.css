@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+ }
+
+ .htmlFor {
+   background-color: #e0e1dd;
+ }
+
+ @font-face {
+   font-family: projectFont;
+   src: url(../assets/font/espa.otf);
+ }
+
+ .projectFont {
+      font-family: projectFont;
+      font-size: 50px;
+      color: #137aa8;
+      margin: 20px 0 0 0;
+      padding-left: 20px;
+      background-color: #e0e1dd;
+ }
+
+ .navBar {
+   position: sticky;
+   top: 0; /* Stick the nav bar to the top */
+    background: #e0e1dd;
+    height: 60px;
+    display: inline-block;
+    width: 100%;
+    border-bottom: 2px solid black  ;
+ }
+ 
+ .navigation li {
+    float: left;
+    list-style-type: none;
+    position: relative;
+ }
+ 
+ 
+ .navigation li a {
+    font-size: 16px;
+    color: black;
+    display: block;
+    line-height: 60px;
+    padding: 0 26px;
+    text-decoration: none;
+    border-left: 1px solid #e0e1dd;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+ }
+ .navigation li a:hover {
+    background-color: #a8c283;
+ }
+
+ #options a {
+    border-left: 0 none;
+ }
+ 
+ 
+ #options > a {
+    padding-right: 42px;
+ }
+ 
+ 
+ .dropdown {
+    visibility: hidden;
+    position: absolute;
+    top: 110%;
+    right: 0;
+    width: 200px;
+    height: auto;
+    opacity: 0;
+    transition: all 0.1s;
+    background: #e0e1dd;
+ }
+ 
+ 
+ .dropdown li {
+    float: none;
+ }
+ 
+ 
+ .dropdown li a {
+    border-bottom: 1px solid #e0e1dd;
+ }
+ 
+ 
+ #options:hover .subnav {
+    visibility: visible;
+    top: 100%;
+    opacity: 1;
+ }
+ 
+ 
+ #search-bar {
+   display: inline-flex;
+   flex: 1 1 300px;
+   border-radius: 10px;
+   overflow: hidden;
+    float: right;
+    width: 357px;
+    margin: 4px;
+    margin-right: 10px;
+ }
+ 
+ 
+
+ #search_text {
+   border: 0;
+    width: 297px;
+    padding: 15px 20px 15px 20px;
+    font-size: 16px;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: black;
+    outline: none;
+    background: #a8c283;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+ }
+ 
+ 
+ :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: white;
+ }
+ 
+ 
+ #search_text:focus {
+    background: #a8c283;
+ }
+ 
+ 
+ #search_button {
+    border: 0 none;
+    background: #a8c283;
+    width: 60px;
+    float: left;
+    padding: 0 5;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+ }
+ 
+ 
+ #search_button:hover {
+    background-color: #c0de96;
+ }
+
+ .vertical-menu {
+   width: 250px; /* Set a width if you like */
+   padding: 20px 20px;
+ }
+ 
+ .vertical-menu a {
+   background-color: #eee; /* Grey background color */
+   color: black; /* Black text color */
+   display: block; /* Make the links appear below each other */
+   padding: 12px; /* Add some padding */
+   text-decoration: none; /* Remove underline from links */
+ }
+ 
+ .vertical-menu a:hover {
+   background-color: #ccc; /* Dark grey background on mouse-over */
+ }
+ 
+ .vertical-menu a.active {
+   background-color: #04AA6D; /* Add a green color to the "active/current" link */
+   color: white;
+ }

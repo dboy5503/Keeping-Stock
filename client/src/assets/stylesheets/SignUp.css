@@ -68,11 +68,11 @@ html {
     font-size: 14px;
 }
 
-.existing-user p {
+.existing-user a {
     color: #2d702e;
     text-decoration: none;
 }
 
-.existing-user p:hover {
+.existing-user a:hover {
     text-decoration: underline;
 }

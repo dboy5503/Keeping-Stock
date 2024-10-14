@@ -29,7 +29,7 @@ const Header : React.FC = () => {
               
             </li>
   
-            <li><Link to="/News">News</Link></li>
+            <li><Link to="/news">News</Link></li>
   
             {/* Search Bar inside Hamburger */}
             <li className="search-bar">

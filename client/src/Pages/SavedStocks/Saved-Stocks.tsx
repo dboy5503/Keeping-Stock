@@ -71,18 +71,17 @@ const StockList: React.FC = () => {
         setTitle(newTitle);
     };
 
-    /* started working on fixing this 10/14 */
     return (
         <div className="container">
             <div>
                 <EditableTitle initialTitle={title} onSave={handleSave} />
             </div>
-            <ul id="itemList">
+            <ul>
                 {stocks.map((stock) => (
-                    <li id="itemList li" key={stock.symbol}>
+                    <li key={stock.symbol}>
                         {stock.name} ({stock.symbol})
                         {isStockSaved(stock.symbol) ? (
-                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
+                            <button onClick={() => removeStock(stock.symbol)}>Remove</button>
                         ) : (
                         <button onClick={() => saveStock(stock)}>Save</button>
                         )}
@@ -94,11 +93,11 @@ const StockList: React.FC = () => {
             {savedStocks.length === 0 ? (
                 <p>No stocks saved.</p>
             ) : (
-                <ul id="itemList">
+                <ul>
                     {savedStocks.map((stock) => (
-                        <li id="itemList li" key={stock.symbol}>
+                        <li key={stock.symbol}>
                             {stock.name} ({stock.symbol})
-                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
+                            <button onClick={() => removeStock(stock.symbol)}>Remove</button>
                         </li>
                     ))}
                 </ul>

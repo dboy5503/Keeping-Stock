@@ -18,7 +18,6 @@ import SignUp from "./Pages/SignUp/Sign-Up";
 const ProtectedRoute: React.FC<{ loggedIn: boolean }> = ({ loggedIn }) => {
   const navigate = useNavigate();
   useEffect(() => {
-
     if (!loggedIn) {
       navigate("/login");
     }
@@ -45,12 +44,10 @@ const App: React.FC = () => {
   }, []);
   console.log("protected", loggedIn);
 
-
   return (
     <Router>
       <Header />
       <Routes>
-
         <Route path="/signUp" element={<SignUp />} />
         
           <Route path="/" element={<Home />} />
@@ -58,9 +55,9 @@ const App: React.FC = () => {
           <Route path="/saved-stocks" element={<SavedStocks />} />
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
-
         </Route>
       </Routes>
+
       <Footer />
     </Router>
   );

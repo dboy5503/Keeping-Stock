@@ -1,7 +1,6 @@
-import type { UserLogin } from '../interface/UserLogin';
+import type { UserLogin} from '../interface/UserLogin.js';
 
 const login = async (userInfo: UserLogin) => {
-
  console.log('Hello',userInfo);
     try{
     // send a post request with user login info in JSON format to the server
@@ -29,7 +28,7 @@ const login = async (userInfo: UserLogin) => {
   } catch (err) {
     console.log('Error from user login: ', err);
     return Promise.reject('Could not fetch user info');
-
+  }
 };
 
 export { login };
