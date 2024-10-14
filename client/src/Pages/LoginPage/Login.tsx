@@ -62,7 +62,7 @@ const Login: React.FC = () => {
   return (
     <div className="main">
     <div className="login-container">
-      <h2>Login</h2>
+      <h2 className="login-container h2">Login</h2>
       {errors.length > 0 && (
         <div className="error-messages">
           <ul>
@@ -100,7 +100,7 @@ const Login: React.FC = () => {
         </div>
         </div>
 
-        <button type="submit" className=".signin-btn">Sign In</button>
+        <button type="submit" className="signin-btn">Sign In</button>
         <p className="new-user">New User? <Link to="./Components/Sign-Up">Create an Account</Link></p>
         </div>
       </form>

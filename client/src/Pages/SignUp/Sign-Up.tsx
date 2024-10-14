@@ -83,8 +83,10 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
+        </div>
 
         <div className="signup-form">
+          <div className="input-field">
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -95,8 +97,10 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
+        </div>
 
         <div className="signup-form">
+          <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -107,8 +111,10 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
+        </div>
 
         <div className="signup-form">
+          <div className="input-field">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
