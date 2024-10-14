@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../assets/stylesheets/SignUp.css';
+import './SignUp.css';
 import { Link } from 'react-router-dom';
 
 interface SignUpFormData {
@@ -46,17 +46,12 @@ const SignUp: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      //store in local storage
-      localStorage.setItem('user', formData.email,);
       console.log('Form submitted successfully:', formData);
       // You could now send the formData to an API for signup
-      
-      
-
-      
     }
   };
 
+  /* css files were fixed */
   return (
     <div className="main">
     <div className="signup-container">
@@ -97,6 +92,7 @@ const SignUp: React.FC = () => {
         </div>
 
         <div className="signup-form">
+        <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -107,8 +103,10 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
+        </div>
 
         <div className="signup-form">
+          <div className="input-field">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
@@ -118,6 +116,7 @@ const SignUp: React.FC = () => {
             onChange={handleChange}
             required
           />
+        </div>
         </div>
         </div>
 

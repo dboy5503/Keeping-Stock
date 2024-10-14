@@ -76,11 +76,11 @@
     font-size: 14px;
 }
 
-.new-user a {
+.new-user p {
     color: #2d702e;
     text-decoration: none;
 }
 
-.new-user a:hover {
+.new-user p:hover {
     text-decoration: underline;
 }

@@ -45,24 +45,25 @@ const Login: React.FC = () => {
     if (validateForm()) 
       try{
     const data = await login(formData); // this will be the response from the API when the user logs in
+    
     // If login is successful, call Auth.login to store the token in localStorage
     Auth.login(data.token) 
     console.log('Login successful:', data);
-      
-      
+
+    // Redirect the user to the home page after successful login
+    window.location.assign('/');
       }catch (err){
+
         console.error('Error from user login: ', err);
-       
       
-      
-    
     }
   };
 
+  /* css files were fixed 10/13 */
   return (
     <div className="main">
     <div className="login-container">
-      <h2>Login</h2>
+      <h2 className="login-container h2">Login</h2>
       {errors.length > 0 && (
         <div className="error-messages">
           <ul>
@@ -85,9 +86,8 @@ const Login: React.FC = () => {
             required
           />
         </div>
-
         <div className="login-form">
-          <div className="input-field">
+        <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -100,8 +100,8 @@ const Login: React.FC = () => {
         </div>
         </div>
 
-        <button type="submit" className=".signin-btn">Sign In</button>
-        <p className="new-user">New User? <Link to="./Components/Sign-Up">Create an Account</Link></p>
+        <button type="submit" className="signin-btn">Sign In</button>
+        <p className="new-user">New User? <Link to="/Sign-Up">Create an Account</Link></p>
         </div>
       </form>
     </div>
