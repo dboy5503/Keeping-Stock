@@ -53,7 +53,9 @@ const Login: React.FC = () => {
     // Redirect the user to the home page after successful login
     window.location.assign('/');
       }catch (err){
-        console.log('Error from user login: ', err);
+
+        console.error('Error from user login: ', err);
+      
     }
   };
 

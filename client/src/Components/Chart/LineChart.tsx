@@ -15,6 +15,7 @@ import { Line } from "react-chartjs-2";
 import { StockDetails } from "../../API/ApiInterface.js";
 import "./LineChartStyle.css";
 
+
 ChartJS.register(
   LineElement,
   PointElement, //

@@ -15,30 +15,50 @@ import Home from "./Pages/HomePage/Home";
 import "./App.css";
 import SignUp from "./Pages/SignUp/Sign-Up";
 
-const ProtectedRoute: React.FC<{loggedIn:boolean}> = ({loggedIn}) => {
+const ProtectedRoute: React.FC<{ loggedIn: boolean }> = ({ loggedIn }) => {
   const navigate = useNavigate();
   useEffect(() => {
-    if(!loggedIn) {
-      navigate('/login');
+
+    if (!loggedIn) {
+      navigate("/login");
     }
   }, [loggedIn, navigate]);
 
-  return <Outlet />;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 const App: React.FC = () => {
-  const [loggedIn] = useState(false); // Example state for loggedIn
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const onLoggedIn = () => {
+      setLoggedIn(true);
+    };
+    window.addEventListener("auth:login", onLoggedIn);
+    return () => {
+      window.removeEventListener("auth:login", onLoggedIn);
+    };
+  }, []);
+  console.log("protected", loggedIn);
+
 
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+
         <Route path="/signUp" element={<SignUp />} />
-        <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+        
+          <Route path="/" element={<Home />} />
           <Route path="/news" element={<FinancialNews />} />
           <Route path="/saved-stocks" element={<SavedStocks />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+
         </Route>
       </Routes>
       <Footer />

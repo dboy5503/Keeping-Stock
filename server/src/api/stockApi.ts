@@ -97,7 +97,8 @@ class StockApi {
     async getFinanceNews() { // this will provide the most up to date news on a stock 
       try {
         const response = await fetch( //alpha vantage api does not care if the stock is uppercase or lowercase!
-          `${this.globalBaseURL}query?function=NEWS_SENTIMENT&topics=finance&apikey=${this.globalApiKey}`
+          `${this.globalBaseURL}query?function=NEWS_SENTIMENT&topics=finance&apikey=${this.globalApiKey}`,
+          // {headers: {Authorization: `Bearer ${token}`}}
         );
         console.log(response);
         const stock = await response.json();
