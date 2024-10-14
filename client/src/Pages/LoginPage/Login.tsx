@@ -62,7 +62,7 @@ const Login: React.FC = () => {
   return (
     <div className="main">
     <div className="login-container">
-      <h2 className="login-container h2">Login</h2>
+      <h2>Login</h2>
       {errors.length > 0 && (
         <div className="error-messages">
           <ul>
@@ -72,10 +72,11 @@ const Login: React.FC = () => {
           </ul>
         </div>
       )}
-      <form onSubmit={handleSubmit}>
-        <div className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
+
           <div className="input-field">
-          <label htmlFor="email">Email</label>
+          <input type="text" placeholder="Email" />
+          {/* <label htmlFor="email">Email</label> */}
           <input
             type="email"
             name="email"
@@ -85,10 +86,9 @@ const Login: React.FC = () => {
             required
           />
         </div>
-
-        <div className="login-form">
           <div className="input-field">
-          <label htmlFor="password">Password</label>
+          <input type="text" placeholder="Password" />
+          {/* <label htmlFor="password">Password</label> */}
           <input
             type="password"
             name="password"
@@ -98,11 +98,9 @@ const Login: React.FC = () => {
             required
           />
         </div>
-        </div>
 
         <button type="submit" className="signin-btn">Sign In</button>
-        <p className="new-user">New User? <Link to="./Components/Sign-Up">Create an Account</Link></p>
-        </div>
+        <p className="new-user">New User?<Link to="/Sign-Up">Create an Account</Link></p>
       </form>
     </div>
     </div>
