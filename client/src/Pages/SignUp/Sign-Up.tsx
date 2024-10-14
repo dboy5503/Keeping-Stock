@@ -51,6 +51,7 @@ const SignUp: React.FC = () => {
     }
   };
 
+  /* css files were fixed */
   return (
     <div className="main">
     <div className="signup-container">
@@ -91,6 +92,7 @@ const SignUp: React.FC = () => {
         </div>
 
         <div className="signup-form">
+        <div className="input-field">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -101,8 +103,10 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
+        </div>
 
         <div className="signup-form">
+          <div className="input-field">
           <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
@@ -112,6 +116,7 @@ const SignUp: React.FC = () => {
             onChange={handleChange}
             required
           />
+        </div>
         </div>
         </div>
 

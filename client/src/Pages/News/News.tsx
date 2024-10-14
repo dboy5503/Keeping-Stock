@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import './News.css';
 
 const FinancialNews: React.FC = () => {
     interface Article {
@@ -10,21 +10,23 @@ const FinancialNews: React.FC = () => {
 
     const [news, setNews] = useState<Article[]>([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await axios.get('https://newsapi.org/v2/everything', {
-                    params: {
-                        q: 'finance',
-                        apiKey: 'YOUR_API_KEY', // Replace with your NewsAPI key or any other service key
-                    }
-                });
-                setNews(response.data.articles);
+                const response = await fetch("/api/stocks/financeNews");
+                console.log(response);
+                const data = await response.json();
+               
+                setNews(data.articles);
                 setLoading(false);
             } catch (err) {
-                setError((err as any).message);
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError("An unknown error occurred");
+                }
                 setLoading(false);
             }
         };
@@ -40,19 +42,24 @@ const FinancialNews: React.FC = () => {
         return <div>Error: {error}</div>;
     }
 
+    /* css files were fixed */
     return (
         <div className="news-container">
-            {news.map((article, index) => (
-                <div key={index} className="news-item">
-                    <h3>{article.title}</h3>
-                    <p>{article.description}</p>
-                    <a href={article.url} target="_blank" rel="noopener noreferrer">
-                        Read more
-                    </a>
-                </div>
-            ))}
-        </div>
-    );
+        <div className="news-section">
+            <div className="news-box">
+        {news.map((article, index) => (
+            <div key={index} className="news-item">
+                <h3 className="news-box h3">{article.title}</h3>
+                <p className="news-box p">{article.description}</p>
+                <a href={article.url} target="_blank" rel="noopener noreferrer">
+                    Read more
+                </a>
+            </div>
+        ))}
+    </div>
+    </div>
+    </div>
+);
 };
 
 export default FinancialNews;

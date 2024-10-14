@@ -20,7 +20,7 @@ router.get('/stockInfo/:ticker_value', async (req:Request, res:Response) => {
 
 router.get('/news/:title_value', async (req:Request, res:Response) => {
 
-    const results = await stockApi.getStockNews(req.params.title)
+    const results = await stockApi.getStockNews(req.params.title_value)
     res.json(results)
 })
 
@@ -29,6 +29,13 @@ router.get('/topGainAndLoss', async (_req:Request, res:Response) => {
     const results = await stockApi.getTopStockGainAndLosses()
     res.json(results)
 })
+router.get('/financeNews', async ( res:Response) => {
+        console.log('Hello')
+        const results = await stockApi.getFinanceNews()
+        res.json(results) 
+    })
+
+
 
 
 

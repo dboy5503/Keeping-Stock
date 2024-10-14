@@ -45,7 +45,7 @@ const EditableTitle: React.FC<EditableTitleProps> = ({ initialTitle, onSave }) =
                     value={title}
                     onChange={handleInputChange}
                     onBlur={handleInputBlur}
-                    onKeyPress={handleInputKeyPress}
+                    onKeyDown={handleInputKeyPress}
                 />
             ) : (
                 <h1 onClick={handleTitleClick}>{title}</h1>

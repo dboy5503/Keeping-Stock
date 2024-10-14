@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import './News.css';
+
 
 const FinancialNews: React.FC = () => {
     interface Article {
@@ -10,20 +11,16 @@ const FinancialNews: React.FC = () => {
     }
     
     const [news, setNews] = useState<Article[]>([]);
-    const [query, setQuery] = useState('finance'); // Default search query
+    // const [query, setQuery] = useState('finance'); // Default search query
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const fetchNews = async () => {
         setLoading(true); // Show loading state for each search
         try {
-            const response = await axios.get('https://newsapi.org/v2/everything', {
-                params: {
-                    q: query,
-                    apiKey: 'YOUR_API_KEY',
-                },
-            });
-            setNews(response.data.articles);
+            const response = await fetch("/api/stocks/financeNews");
+            const data = await response.json();
+            setNews(data.response)
             setLoading(false);
         } catch (err) {
             if (err instanceof Error) {
@@ -59,8 +56,8 @@ const FinancialNews: React.FC = () => {
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    value={''}
+                    onChange={(e) => (e.target.value)}
                     placeholder="Search for financial news"
                 />
                 <button type="submit">Search</button>
