@@ -7,13 +7,16 @@ interface Stock {
     name: string;
 }
 
-// replace the strings 'AAPL', 'GOOGL', 'AMZN', 'TSLA' with the actual stock data
+// this should allow the stocks array to be populated with the data from the API
+// to do this, we uncommented the fetch stocks code and the stocks state should be set to the data from the API
+// the stocks can then be displayed in the list
+// and then the stocks can be saved to the savedStocks array
 const StockList: React.FC = () => {
-    const [stocks] = useState<Stock[]>([
-        { symbol: 'AAPL', name: 'Apple' },
-        { symbol: 'GOOGL', name: 'Google' },
-        { symbol: 'AMZN', name: 'Amazon' },
-        { symbol: 'TSLA', name: 'Tesla' },
+    const [stocks, setStocks] = useState<Stock[]>([
+        { symbol: '', name: '' },
+        { symbol: '', name: '' },
+        { symbol: '', name: '' },
+        { symbol: '', name: '' },
     ]);
 
     const [savedStocks, setSavedStocks] = useState<Stock[]>([]);
@@ -27,19 +30,19 @@ const StockList: React.FC = () => {
     }, []);
 
     // Fetch stocks from an API on component mount
-    // useEffect(() => {
-    //     const fetchStocks = async () => {
-    //         try {
-    //             const response = await fetch('https://api.example.com/stocks');
-    //             const data = await response.json();
-    //             setStocks(data);
-    //         } catch (error) {
-    //             console.error('Error fetching stocks:', error);
-    //         }
-    //     };
-    
-    //     fetchStocks();
-    // }, []); 
+     useEffect(() => {
+         const fetchStocks = async () => {
+         try {
+                const response = await fetch('https://api.example.com/stocks');
+                const data = await response.json();
+                setStocks(data);
+            } catch (error) {
+                console.error('Error fetching stocks:', error);
+            }
+        };
+
+       fetchStocks();
+    }, []); 
 
     // Save stocks to local storage whenever the savedStocks state changes
     useEffect(() => {
@@ -76,14 +79,14 @@ const StockList: React.FC = () => {
             <div>
                 <EditableTitle initialTitle={title} onSave={handleSave} />
             </div>
-            <ul>
+            <ul id="itemList">
                 {stocks.map((stock) => (
                     <li key={stock.symbol}>
                         {stock.name} ({stock.symbol})
                         {isStockSaved(stock.symbol) ? (
-                            <button onClick={() => removeStock(stock.symbol)}>Remove</button>
+                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
                         ) : (
-                        <button onClick={() => saveStock(stock)}>Save</button>
+                            <button onClick={() => saveStock(stock)}>Save</button>
                         )}
                     </li>
                 ))}
@@ -93,11 +96,11 @@ const StockList: React.FC = () => {
             {savedStocks.length === 0 ? (
                 <p>No stocks saved.</p>
             ) : (
-                <ul>
+                <ul id="stocksList">
                     {savedStocks.map((stock) => (
                         <li key={stock.symbol}>
                             {stock.name} ({stock.symbol})
-                            <button onClick={() => removeStock(stock.symbol)}>Remove</button>
+                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
                         </li>
                     ))}
                 </ul>
