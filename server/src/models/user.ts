@@ -56,6 +56,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
               },
               // Hash password after updating a user
               beforeUpdate: async (user) => {
+                if(user.changed('password'))
                 await user.setPassword(user.password);
                 },
             },

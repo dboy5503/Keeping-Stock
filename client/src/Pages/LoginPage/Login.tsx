@@ -51,7 +51,7 @@ const Login: React.FC = () => {
       
       
       }catch (err){
-        console.log('Error from user login: ', err);
+        console.error('Error from user login: ', err);
        
       
       

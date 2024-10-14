@@ -29,8 +29,9 @@ router.get('/topGainAndLoss', async (_req:Request, res:Response) => {
     const results = await stockApi.getTopStockGainAndLosses()
     res.json(results)
 })
-router.get('/financeNews', async ( res:Response) => {
-        console.log('Hello')
+router.get('/financeNews', async  (_req:Request, res:Response) => {
+
+        console.log( _req.headers)
         const results = await stockApi.getFinanceNews()
         res.json(results) 
     })

@@ -8,21 +8,22 @@ const login = async (userInfo: UserLogin) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        
-     
-       
       },
+      
       body: JSON.stringify(userInfo),
     });
     
-    const data = await response.json(); // get the JSON response from the server
-    console.log('hello mate ', data);
+    //check if the response is ok
+    console.log('auth api ');
+    
+    
+    
    
 
     if (!response.ok) {
       throw new Error('User information not retrieved, check network tab!');
     }
-
+    const data = await response.json(); // get the JSON response from the server
     return data;
   } catch (err) {
     console.log('Error from user login: ', err);
