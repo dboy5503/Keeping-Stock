@@ -4,6 +4,7 @@ import './Home.css';
 import LineChart, { LineChart2, LineChart3 } from '../../Components/Chart/LineChart';
 
 import { useEffect, useState } from 'react';
+import AuthService from '../../utils/auth'
 
 
 
@@ -16,10 +17,13 @@ export default function Home() {
   const [stockInfo, setStockInfo] = useState({ ticker: '', name: '', description: '', market_cap: '' });
   const fetchStockInfo = async () => {
     try {
-      const response = await fetch("/api/stocks/stockInfo/AAPL");
+      const token = AuthService.getToken()  // getting the token from the backend and attaching for all future request
+
+      const response = await fetch("/api/stocks/stockInfo/AAPL",
+      {headers: {Authorization: `Bearer ${token}`},}
+      );
       const data = await response.json();
       const { ticker, name, description, market_cap } = data.results;
-      console.log(data);
       localStorage.setItem("AaplStockInfo", JSON.stringify({ ticker, name, description, market_cap }));
       setStockInfo({ ticker, name, description, market_cap });
     } catch (err) {
