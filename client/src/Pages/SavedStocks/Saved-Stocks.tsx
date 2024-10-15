@@ -1,112 +1,130 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../../assets/stylesheets/SavedStocks.css';
-import EditableTitle from './Edit-Title.tsx';
 
+// Define a type for the stock
 interface Stock {
-    symbol: string;
-    name: string;
+  symbol: string;
+  name: string;
 }
 
-// this should allow the stocks array to be populated with the data from the API
-// to do this, we uncommented the fetch stocks code and the stocks state should be set to the data from the API
-// the stocks can then be displayed in the list
-// and then the stocks can be saved to the savedStocks array
-const StockList: React.FC = () => {
-    const [stocks, setStocks] = useState<Stock[]>([
-        { symbol: '', name: '' },
-        { symbol: '', name: '' },
-        { symbol: '', name: '' },
-        { symbol: '', name: '' },
-    ]);
+// Define a type for the stock list
+interface StockList {
+  name: string;
+  stocks: Stock[];
+}
 
-    const [savedStocks, setSavedStocks] = useState<Stock[]>([]);
+const SavedStocks: React.FC = () => {
+  // State to manage lists of stocks
+  const [stockLists, setStockLists] = useState<StockList[]>([]);
+  const [selectedList, setSelectedList] = useState<StockList | null>(null);
+  const [newListName, setNewListName] = useState('');
+  const [newStockSymbol, setNewStockSymbol] = useState('');
+  const [newStockName, setNewStockName] = useState('');
 
-    // Load saved stocks from local storage on component mount
-    useEffect(() => {
-        const saved = localStorage.getItem('savedStocks');
-        if (saved) {
-            setSavedStocks(JSON.parse(saved));
-        }
-    }, []);
+  // Handle adding a new stock list
+  const addStockList = () => {
+    if (newListName) {
+      setStockLists([...stockLists, { name: newListName, stocks: [] }]);
+      setNewListName('');
+    }
+  };
 
-    // Fetch stocks from an API on component mount
-     useEffect(() => {
-         const fetchStocks = async () => {
-         try {
-                const response = await fetch('https://api.example.com/stocks');
-                const data = await response.json();
-                setStocks(data);
-            } catch (error) {
-                console.error('Error fetching stocks:', error);
-            }
-        };
+  // Handle selecting a stock list to view
+  const viewStockList = (list: StockList) => {
+    setSelectedList(list);
+  };
 
-       fetchStocks();
-    }, []); 
+  // Handle adding a stock to the currently selected list
+  const addStockToList = () => {
+    if (selectedList && newStockSymbol && newStockName) {
+      const updatedList = {
+        ...selectedList,
+        stocks: [...selectedList.stocks, { symbol: newStockSymbol, name: newStockName }]
+      };
+      setStockLists(
+        stockLists.map((list) =>
+          list.name === selectedList.name ? updatedList : list
+        )
+      );
+      setSelectedList(updatedList);
+      setNewStockSymbol('');
+      setNewStockName('');
+    }
+  };
 
-    // Save stocks to local storage whenever the savedStocks state changes
-    useEffect(() => {
-        localStorage.setItem('savedStocks', JSON.stringify(savedStocks));
-    }, [savedStocks]);
+  // Handle removing a stock from the selected list
+  const removeStockFromList = (symbol: string) => {
+    if (selectedList) {
+      const updatedList = {
+        ...selectedList,
+        stocks: selectedList.stocks.filter((stock) => stock.symbol !== symbol)
+      };
+      setStockLists(
+        stockLists.map((list) =>
+          list.name === selectedList.name ? updatedList : list
+        )
+      );
+      setSelectedList(updatedList);
+    }
+  };
 
-    // Add stock to saved list
-    const saveStock = (stock: Stock) => {
-        if (!savedStocks.some((s) => s.symbol === stock.symbol)) {
-            setSavedStocks([...savedStocks, stock]);
-        }
-    };
+  return (
+    <div className="container">
+      <h2>Manage Your Stock Lists</h2>
 
-    // Remove stock from saved list
-    const removeStock = (symbol: string) => {
-        const updatedStocks = savedStocks.filter((stock) => stock.symbol !== symbol);
-        setSavedStocks(updatedStocks);
-    };
+      {/* Input to create new stock list */}
+      <input
+        type="text"
+        placeholder="Enter new list name"
+        value={newListName}
+        onChange={(e) => setNewListName(e.target.value)}
+      />
+      <button onClick={addStockList}>Create List</button>
 
-    // Check if the stock is already saved
-    const isStockSaved = (symbol: string) => {
-        return savedStocks.some((stock) => stock.symbol === symbol);
-    };
+      <h3>Your Stock Lists</h3>
+      <ul>
+        {stockLists.map((list) => (
+          <li key={list.name} onClick={() => viewStockList(list)}>
+            {list.name}
+          </li>
+        ))}
+      </ul>
 
-    // Edit the title of the stock list
-    const [title, setTitle] = useState<string>('My Stock List');
+      {/* Display the selected stock list */}
+      {selectedList && (
+        <div>
+          <h3>Stocks in {selectedList.name}</h3>
+          <ul>
+            {selectedList.stocks.map((stock) => (
+              <li key={stock.symbol}>
+                {stock.name} ({stock.symbol})
+                <button className="remove-stock" onClick={() => removeStockFromList(stock.symbol)}>
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
 
-    const handleSave = (newTitle: string) => {
-        setTitle(newTitle);
-    };
-
-    return (
-        <div className="container">
-            <div>
-                <EditableTitle initialTitle={title} onSave={handleSave} />
-            </div>
-            <ul id="itemList">
-                {stocks.map((stock) => (
-                    <li key={stock.symbol}>
-                        {stock.name} ({stock.symbol})
-                        {isStockSaved(stock.symbol) ? (
-                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
-                        ) : (
-                            <button onClick={() => saveStock(stock)}>Save</button>
-                        )}
-                    </li>
-                ))}
-            </ul>
-
-            <h2>Saved Stocks</h2>
-            {savedStocks.length === 0 ? (
-                <p>No stocks saved.</p>
-            ) : (
-                <ul id="stocksList">
-                    {savedStocks.map((stock) => (
-                        <li key={stock.symbol}>
-                            {stock.name} ({stock.symbol})
-                            <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+          {/* Add new stock to the selected list */}
+          <div>
+            <input
+              type="text"
+              placeholder="Stock Abbr."
+              value={newStockSymbol}
+              onChange={(e) => setNewStockSymbol(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Stock Name"
+              value={newStockName}
+              onChange={(e) => setNewStockName(e.target.value)}
+            />
+            <button onClick={addStockToList}>Add Stock</button>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
-export default StockList;
+export default SavedStocks;
