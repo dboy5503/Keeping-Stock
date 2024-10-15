@@ -83,7 +83,6 @@ const SignUp: React.FC = () => {
             required
           />
         </div>
-        </div>
           <div className="input-field">
           <input
             type="email"
@@ -116,6 +115,7 @@ const SignUp: React.FC = () => {
             onChange={handleChange}
             required
           />
+        </div>
         </div>
 
         <button type="submit" className="signup-btn">Sign Up</button>

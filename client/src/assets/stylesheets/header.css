@@ -117,14 +117,14 @@
     position: absolute;
     top: 60px;
     right: 0;
-    width: 25px;
+    width: 100%;
     background-color: #e0e1dd;
   }
 
   
 .nav-links.open li {
   padding: 15px;
-  text-align: end;
+  text-align: center;
 }
 
 /* Media query for smaller screens */
@@ -135,15 +135,6 @@
 
   .nav-links {
     display: none;
-  }
-
-  .nav-links.open {
-    display: flex;
-  }
-
-  .nav-links.open:hover {
-    background-color: #3983a5ac;
-    color: white;
   }
   
     .search-bar {
