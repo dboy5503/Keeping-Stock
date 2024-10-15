@@ -6,14 +6,12 @@ import AuthService from '../../utils/auth'
 const FinancialNews: React.FC = () => {
     interface Article {
         title: string;
-        description: string;
+        summary: string;
         url: string;
     }
 
     const [news, setNews] = useState<Article[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
+   
     useEffect(() => {
         const fetchNews = async () => {
             try {
@@ -22,35 +20,32 @@ const FinancialNews: React.FC = () => {
                 {headers: {Authorization: `Bearer ${token}`}}
                 );
                 
-                console.log(response);
+                // console.log(response);
                 const data = await response.json();
+                // store in local storage
+                console.log(data);
+                setNews(data.feed);
+                localStorage.setItem('news', data)
                
-                setNews(data.articles);
-                setLoading(false);
-            } catch (err) {
-                setError((err as any).message);
-                setLoading(false);
+               } catch {
+               console.log("error");
+              
             }
+
+            
         };
 
         fetchNews();
     }, []);
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
+  
     return (
         <div className="news-container">
-            {news.map((article, index) => (
+            {news.map((item, index) => (
                 <div key={index} className="news-box">
-                    <h3>{article.title}</h3>
-                    <p>{article.description}</p>
-                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                    <h3>{item.title}</h3>
+                    <p>{item.summary}</p>
+                    <a href={item.url} target="_blank" rel="noopener noreferrer">
                         Read more
                     </a>
                 </div>
