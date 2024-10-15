@@ -102,7 +102,7 @@ const Login: React.FC = () => {
         </div>
 
         <button type="submit" className="signin-btn">Sign In</button>
-        <p className="new-user">New User?<Link to="/Sign-Up">Create an Account</Link></p>
+        <p className="new-user">New User? <Link to="/Sign-Up">Create an Account</Link></p>
       </form>
     </div>
     </div>

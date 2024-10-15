@@ -117,14 +117,14 @@
     position: absolute;
     top: 60px;
     right: 0;
-    width: 100%;
-    background-color: #333;
+    width: 25px;
+    background-color: #e0e1dd;
   }
 
   
 .nav-links.open li {
   padding: 15px;
-  text-align: center;
+  text-align: end;
 }
 
 /* Media query for smaller screens */
@@ -140,10 +140,15 @@
   .nav-links.open {
     display: flex;
   }
+
+  .nav-links:hover {
+    background-color: #3983a5ac;
+    color: white;
+  }
   
     .search-bar {
       display: flex;
-      width: 80%;
+      width: 25px;
       padding: 10px;
       margin-top: 10px;
     }
@@ -157,7 +162,7 @@
   
     .search-bar button {
       padding: 8px;
-      background-color: #555;
+      background-color: transparent;
       border: none;
       border-radius: 0 5px 5px 0;
       color: white;

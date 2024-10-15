@@ -34,7 +34,7 @@ const Header : React.FC = () => {
 
           {/* Search Bar inside Hamburger */}
           <li className="search-bar">
-            <input className="search-bar input" type="text" placeholder="Search for a Stock" />
+            <input type="text" placeholder="Search for a Stock" />
             <button className="search-bar button" type="submit">🔍</button>
           </li>
         </ul>
