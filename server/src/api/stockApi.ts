@@ -1,4 +1,4 @@
-
+import axios from "axios";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 dotenv.config();
@@ -126,6 +126,40 @@ class StockApi {
   
     }
 
+    // Fetch stock data by symbol
+export const fetchStockData = async (symbol: string) => {
+  try {
+    const response = await axios.get(`https://www.alphavantage.co/query`, {
+      params: {
+        function: 'TIME_SERIES_INTRADAY',
+        symbol,
+        interval: '5min',
+        apikey: process.env.SERVICE_G_API_KEY,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching stock data:', error);
+    throw error;
+  }
+};
+
+// Fetch company overview
+export const fetchCompanyOverview = async (symbol: string) => {
+  try {
+    const response = await axios.get(`https://www.alphavantage.co/query`, {
+      params: {
+        function: 'OVERVIEW',
+        symbol,
+        apikey: process.env.SERVICE_G_API_KEY,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching company overview:', error);
+    throw error;
+  }
+};
    
   
   

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/header.css';
-import SearchResults from '../Search/Search-Stocks';
+// import SearchResults from '../Search/Search-Stocks';
 
 const Header : React.FC = () => {
     // State to manage whether the menu is open or closed
@@ -35,8 +35,7 @@ const Header : React.FC = () => {
 
           {/* Search Bar inside Hamburger */}
           <li className="search-bar">
-          
-            <SearchResults />
+            <input type="text" placeholder="Search for a stock" />
             <button className="search-bar button" type="submit">🔍</button>
           </li>
         </ul>

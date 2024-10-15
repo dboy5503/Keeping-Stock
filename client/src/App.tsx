@@ -50,10 +50,11 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
-          <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
           <Route path="/news" element={<FinancialNews />} />
           <Route path="/saved-stocks" element={<SavedStocks />} />
+        <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+         
           
          
         </Route>
