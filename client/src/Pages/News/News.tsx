@@ -47,7 +47,7 @@ const FinancialNews: React.FC = () => {
     return (
         <div className="news-container">
             {news.map((article, index) => (
-                <div key={index} className="news-item">
+                <div key={index} className="news-box">
                     <h3>{article.title}</h3>
                     <p>{article.description}</p>
                     <a href={article.url} target="_blank" rel="noopener noreferrer">

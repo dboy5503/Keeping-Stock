@@ -29,9 +29,15 @@
 
 @media screen and (max-width: 870px) {
     .login-container {
-        width: 90%; /* Adjust the width to your preference */
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        height: fit-content;
+        width: 500px; /* Adjust the width to your preference */
+        margin-bottom: 100px;
     }
-    
 }
 
 /* Centering text and form */
@@ -48,12 +54,20 @@
 }
 
 .input-field {
-    width: 80px; /* Make sure the input fields take full width */
+    width: 60%; /* Make sure the input fields take full width */
     border: none;
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
     background-color: #bcd7e4;
+    outline: none;
+}
+
+#email, #password {
+    width: 60%;
+    border-radius: 10px;
+    background-color: #bcd7e4;
+    color: rgba(73, 73, 73, 0.596);
     outline: none;
 }
 
