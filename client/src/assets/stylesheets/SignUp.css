@@ -62,7 +62,7 @@ html {
     outline: none;
 }
 
-#Name, #Email, #Password, #ConfirmPassword {
+#name, #email, #password, #confirmPassword {
     width: 60%;
     border: none;
     padding: 10px;
