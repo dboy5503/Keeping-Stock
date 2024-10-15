@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './SearchResults.css';
+
+import { useEffect } from 'react';
 
 interface Stock {
     symbol: string;
@@ -15,6 +16,13 @@ const SearchResults: React.FC = () => {
 
     // Function to handle search action
     const handleSearch = async () => {
+
+    }
+
+
+    useEffect(()=>{
+        const fetchStocks = async () => {
+
         try {
             const response = await fetch(`/api/stocks/`); // Replace with your API
             const data = await response.json();
@@ -29,7 +37,12 @@ const SearchResults: React.FC = () => {
             setError('An error occurred while fetching results.');
             console.error(err);
         }
-    };
+    }
+    fetchStocks();
+    
+
+    }, [searchInput]);
+       
     
 
     return (

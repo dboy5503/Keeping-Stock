@@ -72,7 +72,7 @@ class StockApi {
     );
     console.log(response);
     const stock = await response.json();
-    // return stock;
+    return stock;
     } catch (err){
     console.log('Error',err);
     throw err
