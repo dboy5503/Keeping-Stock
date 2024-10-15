@@ -75,24 +75,26 @@ const Login: React.FC = () => {
       <form className="login-form" onSubmit={handleSubmit}>
 
           <div className="input-field">
-          <input type="text" placeholder="Email" />
+          {/* <input type="text" placeholder="Email" /> */}
           {/* <label htmlFor="email">Email</label> */}
           <input
-            type="email"
+            type="text"
             name="email"
             id="email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
           <div className="input-field">
-          <input type="text" placeholder="Password" />
+          {/* <input type="text" placeholder="Password" /> */}
           {/* <label htmlFor="password">Password</label> */}
           <input
-            type="password"
+            type="text"
             name="password"
             id="password"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
