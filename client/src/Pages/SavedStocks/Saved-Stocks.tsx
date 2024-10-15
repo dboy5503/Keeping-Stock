@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import '../../assets/stylesheets/SavedStocks.css';
+import '../../assets/stylesheets/SavedStocks.css'; // Your existing CSS
+import { fetchStockData, fetchCompanyOverview } from '../../api/stockAPI';
 import EditableTitle from './Edit-Title';
-import { fetchStockData, fetchCompanyOverview } from '../../../../server/src/api/stockApi';
 
-// Define stock data type
 interface Stock {
   symbol: string;
   name: string;
-  price?: string;
+  price?: string; // Add price field for stock data
   overview?: string;
 }
 
@@ -23,38 +22,38 @@ const SavedStocks: React.FC = () => {
     setTitle(newTitle);
   };
 
-// Add stock using Alpha Vantage API
-const addStock = async () => {
-  if (stockSymbol) {
-    try {
-      const stockData = await fetchStockData(stockSymbol);
-      const overviewData = await fetchCompanyOverview(stockSymbol);
-      
-      const stockPrice = stockData['Time Series (5min)']
-        ? (Object.values(stockData['Time Series (5min)'])[0] as { '1. open': string })['1. open'] // Get the latest price
-        : 'N/A';
+  // Add stock using Alpha Vantage API
+  const addStock = async () => {
+    if (stockSymbol) {
+      try {
+        const stockData = await fetchStockData(stockSymbol);
+        const overviewData = await fetchCompanyOverview(stockSymbol);
+        
+        const stockPrice = stockData['Time Series (5min)']
+          ? (Object.values(stockData['Time Series (5min)'])[0] as { '1. open': string })['1. open'] // Get the latest price
+          : 'N/A';
 
-      const newStock: Stock = {
-        name: overviewData.Name || stockSymbol,
-        symbol: stockSymbol,
-        price: stockPrice,
-        overview: overviewData.Description || 'No overview available',
-      };
+        const newStock: Stock = {
+          name: overviewData.Name || stockSymbol,
+          symbol: stockSymbol,
+          price: stockPrice,
+          overview: overviewData.Description || 'No overview available',
+        };
 
-      setSavedStocks([...savedStocks, newStock]);
-      setStockSymbol('');
-    } catch (error) {
-      console.error('Failed to add stock:', error);
+        setSavedStocks([...savedStocks, newStock]);
+        setStockSymbol('');
+      } catch (error) {
+        console.error('Failed to add stock:', error);
+      }
     }
-  }
-};
+  };
 
-  // Handle removing a stock
+  // Remove stock from saved list
   const removeStock = (symbol: string) => {
     setSavedStocks(savedStocks.filter(stock => stock.symbol !== symbol));
   };
 
-  // Handle viewing stock details when clicked
+  // View stock details when searched
   const viewStockDetails = () => {
     const filteredStocks = savedStocks.filter(
       (stock) =>
@@ -67,7 +66,7 @@ const addStock = async () => {
 
   return (
     <div className="main">
-      <div className="stocks-container">
+      <div className="stock-container">
       <EditableTitle initialTitle={title} onSave={handleTitleSave} />
         <table>
           <thead>
@@ -85,7 +84,7 @@ const addStock = async () => {
                 <td>{stock.symbol}</td>
                 <td>{stock.price ? `$${stock.price}` : 'N/A'}</td>
                 <td>
-                  <button className="remove-stock" onClick={() => removeStock(stock.symbol)}>Remove</button>
+                  <button className="remove-btn" onClick={() => removeStock(stock.symbol)}>Remove</button>
                 </td>
               </tr>
             ))}
@@ -102,6 +101,7 @@ const addStock = async () => {
             onChange={(e) => setStockSymbol(e.target.value)}
           />
           <button className="add-btn" onClick={addStock}>Add Stock</button>
+        </div>
 
         <h2>Search Stock Details</h2>
         <div className="stock-form">
@@ -139,7 +139,6 @@ const addStock = async () => {
           </div>
         )}
       </div>
-    </div>
     </div>
   );
 };
