@@ -128,7 +128,7 @@
 }
 
 /* Media query for smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 870px) {
   .hamburger {
     display: flex;
   }
@@ -141,7 +141,7 @@
     display: flex;
   }
 
-  .nav-links:hover {
+  .nav-links.open:hover {
     background-color: #3983a5ac;
     color: white;
   }

@@ -78,7 +78,7 @@ const Login: React.FC = () => {
           {/* <input type="text" placeholder="Email" /> */}
           {/* <label htmlFor="email">Email</label> */}
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="Email"
@@ -91,7 +91,7 @@ const Login: React.FC = () => {
           {/* <input type="text" placeholder="Password" /> */}
           {/* <label htmlFor="password">Password</label> */}
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             placeholder="Password"

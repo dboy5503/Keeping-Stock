@@ -73,58 +73,49 @@ const SignUp: React.FC = () => {
       <form onSubmit={handleSubmit}>
         <div className="signup-form">
         <div className="input-field">
-          <label htmlFor="name">Name</label>
           <input
             type="text"
             name="name"
             id="name"
+            placeholder="Name"
             value={formData.name}
             onChange={handleChange}
             required
           />
         </div>
         </div>
-
-        <div className="signup-form">
           <div className="input-field">
-          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
             id="email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             required
           />
         </div>
-        </div>
-
-        <div className="signup-form">
           <div className="input-field">
-          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
             id="password"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
           />
         </div>
-        </div>
-
-        <div className="signup-form">
           <div className="input-field">
-          <label htmlFor="confirmPassword">Confirm Password</label>
           <input
             type="password"
             name="confirmPassword"
             id="confirmPassword"
+            placeholder="Confirm Password"
             value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
-        </div>
         </div>
 
         <button type="submit" className="signup-btn">Sign Up</button>
