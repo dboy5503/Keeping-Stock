@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../../assets/stylesheets/SignUp.css';
 import { Link } from 'react-router-dom';
+import Auth from '../../utils/auth'
+import {login} from '../../API/authAPI';
 
 interface SignUpFormData {
   name: string;
@@ -43,19 +45,21 @@ const SignUp: React.FC = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      //store in local storage
-      localStorage.setItem('user', formData.email,);
+    if (validateForm()) 
+      try{
+      const data = await login(formData);
+      Auth.login(data.token) 
       console.log('Form submitted successfully:', formData);
       // You could now send the formData to an API for signup
       
-      
+    }catch (err){
+    console.error('Error from user login: ', err);
+   
+  }
+};
 
-      
-    }
-  };
 
   return (
     <div className="main">

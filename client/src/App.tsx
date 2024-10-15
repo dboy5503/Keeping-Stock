@@ -20,7 +20,7 @@ const ProtectedRoute: React.FC<{ loggedIn: boolean }> = ({ loggedIn }) => {
   useEffect(() => {
     if (!loggedIn) {
       navigate("/login");
-    }
+    } 
   }, [loggedIn, navigate]);
 
   return (
@@ -49,12 +49,13 @@ const App: React.FC = () => {
       <Header />
       <Routes>
         <Route path="/signUp" element={<SignUp />} />
-        
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
           <Route path="/" element={<Home />} />
           <Route path="/news" element={<FinancialNews />} />
           <Route path="/saved-stocks" element={<SavedStocks />} />
-          <Route path="/login" element={<Login />} />
-          <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+          
+         
         </Route>
       </Routes>
 
