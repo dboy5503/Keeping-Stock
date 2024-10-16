@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/header.css';
 // import SearchResults from '../Search/Search-Stocks';
-import SavedStocks from "../../Pages/SavedStocks/Saved-Stocks2";
+
 
 const Header : React.FC = () => {
     // State to manage whether the menu is open or closed
-    const [isOpen, setIsOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     // Function to toggle the menu
     const toggleMenu = () => {
-      setIsOpen(!isOpen);
+      setMenuOpen(!menuOpen);
+    };
+
+    const closeMenu = () => {
+      setMenuOpen(false);
     };
 
     return (
@@ -27,11 +31,10 @@ const Header : React.FC = () => {
         </label>
 
         {/* Nav Links */}
-        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signUp">Signup</Link></li>
-          <li><Link to="/saved-stocks">Saved Stocks</Link></li>
-          <li><Link to="/news">News</Link></li>
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
+          <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
+          <li><Link to="/signUp" onClick={closeMenu}>Signup</Link></li>
+          <li><Link to="/news" onClick={closeMenu}>News</Link></li>
 
           {/* Search Bar inside Hamburger */}
           <li className="search-bar">

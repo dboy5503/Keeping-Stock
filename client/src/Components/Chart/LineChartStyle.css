@@ -5,7 +5,7 @@
     width: 100%;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    box-shadow: 0 4 10px rgba(0, 0, 0, 0.378);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -17,7 +17,7 @@
     width: 100%;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    box-shadow: 0 4 10px rgba(0, 0, 0, 0.378);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -30,7 +30,7 @@
     width: 100%;
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 10);
+    box-shadow: 0 4 10px rgba(0, 0, 0, 0.378);
     overflow: hidden;
     position: relative;
     display: flex;
@@ -39,17 +39,13 @@
 }
 
 .NVDA:hover{
-    background-color: #68876f;
-    cursor: pointer;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.989); /* White glowing effect */
 }
 
 .aapl:hover{
-    background-color: #976060;
-    cursor: pointer;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.989); /* White glowing effect */
 }
 
 .Meta:hover{
-    background-color: #989b57;
-    cursor: pointer;
-
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.989); /* White glowing effect */
 }
