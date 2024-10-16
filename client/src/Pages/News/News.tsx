@@ -42,20 +42,20 @@ const FinancialNews: React.FC = () => {
 
   
     return (
-        <div className="news-container">
-        <h1 className='title'>Financial News</h1>
-        <div className="news-container">
-            {news.map((item, index) => (
-                <div key={index} className="news-box">
-                    <h3>{item.title}</h3>
-                    <img src={item.banner_image} alt="news" className='image' />
-                    <p>{item.summary}</p>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer" className='read' >
-                        Read more
-                    </a>
-                </div>
-            ))}
-        </div>
+        <div>
+            <h1 className='title'>Financial News</h1>
+            <div className="news-container">
+                {news.map((item, index) => (
+                    <div key={index} className="news-box">
+                        <h2>{item.title}</h2>
+                        <img src={item.banner_image} alt="news" className='image' />
+                        <p>{item.summary}</p>
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" className='read'>
+                            Read more
+                        </a>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
