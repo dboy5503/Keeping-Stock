@@ -20,6 +20,8 @@ const Login: React.FC = () => {
   // State to manage errors
   const [errors, setErrors] = useState<string[]>([]);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -48,6 +50,7 @@ const Login: React.FC = () => {
     // If login is successful, call Auth.login to store the token in localStorage
     Auth.login(data.token) 
     console.log('Login successful:', data);
+    setIsLoggedIn(true);
       
       
       }catch (err){
@@ -102,6 +105,9 @@ const Login: React.FC = () => {
         </div>
 
         <button type="submit" className="signin-btn">Sign In</button>
+        <div>
+      {isLoggedIn && <p>Login successful!</p>}
+    </div>
         <p className="new-user">New User? <Link to="/Sign-Up">Create an Account</Link></p>
       </form>
     </div>
