@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="footer-content">
         <div className="footer-section about">
           <h1 className="logo-text">Copyright 2024 | Keeping Stock</h1>
-          <p>
+          <p className="keep">
             Keeping Stock is a web application that allows users to search for
             and save their favorite stocks.
           </p>
