@@ -8,7 +8,7 @@ import {
 } from "react-router-dom"; // needs to be installed
 import Login from "./Pages/LoginPage/Login";
 import FinancialNews from "./Pages/News/News";
-import SavedStocks from "./Pages/SavedStocks/Saved-Stocks";
+
 import Footer from "./Components/Footer/Footer";
 import Header from "./Components/Header/Header";
 import Home from "./Pages/HomePage/Home";
@@ -52,7 +52,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
           <Route path="/news" element={<FinancialNews />} />
-          <Route path="/saved-stocks" element={<SavedStocks />} />
+          {/* <Route path="/saved-stocks" element={<SavedStocks />} /> */}
         <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
          
           
