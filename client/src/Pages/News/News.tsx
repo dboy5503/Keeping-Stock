@@ -4,6 +4,7 @@ import AuthService from '../../utils/auth'
 import '../../assets/stylesheets/News.css';
 
 
+
 const FinancialNews: React.FC = () => {
     interface Article {
         title: string;

@@ -6,6 +6,7 @@ name: string;
 description: string;
 market_cap: number;
 ticker:string;
+logo_url: string;
 
 }
 

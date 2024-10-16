@@ -43,18 +43,22 @@ class StockApi {
   private apiKey?: string;
   private globalBaseURL?: string;
   private globalApiKey?: string;
+  private polyBaseURL?: string;
+  private polyApiKey?: string;
 
   constructor() {
     this.baseURL = process.env.API_BASE_URL || "";
     this.apiKey = process.env.API_KEY || "";
     this.globalBaseURL = process.env.SERVICE_G_API_BASE_URL|| "";
     this.globalApiKey = process.env.SERVICE_G_API_KEY || "";
+    this.polyBaseURL = process.env.POLY_API_BASE_URL || "";
+    this.polyApiKey = process.env.POLY_API_KEY || "";
   }
 
   async getAggregateDataByTicker(ticker: string) {
     try {
       const response = await fetch( // this will provide the historical data of a stock
-        `${this.baseURL}/aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-10?adjusted=true&sort=asc&apiKey=${this.apiKey}` 
+        `${this.baseURL}aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-16?adjusted=true&sort=asc&apiKey=${this.apiKey}` 
       );
       console.log(response);
       const stock = await response.json();
@@ -68,7 +72,7 @@ class StockApi {
   async getStockInfo (ticker:string) { //this will provide more details on the company. Description, logo, market etc
   try {
     const response = await fetch(
-      `${this.baseURL}reference/ticker/${ticker}?apiKey=${this.apiKey}`
+      `${this.baseURL}/reference/ticker/${ticker}?apiKey=${this.apiKey}`
     );
     console.log(response);
     const stock = await response.json();
@@ -124,42 +128,28 @@ class StockApi {
         }
       }
   
-    }
+    
 
     // Fetch stock data by symbol
-export const fetchStockData = async (symbol: string) => {
+ async stockSearch (search: any ) {
+  console.log('hello',search);
   try {
-    const response = await axios.get(`https://www.alphavantage.co/query`, {
-      params: {
-        function: 'TIME_SERIES_INTRADAY',
-        symbol,
-        interval: '5min',
-        apikey: process.env.SERVICE_G_API_KEY,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching stock data:', error);
-    throw error;
+    
+    const response = await fetch(`${this.polyBaseURL}/reference/tickers?market=stocks&search=${search}&active=true&sort=ticker&order=asc&limit=50&apiKey=${this.polyApiKey}`,
+    );
+      const stock = await response.json();
+      console.log(stock);
+      // return stock;
+      // console.log(response);
+    } catch (err) {
+      console.log("Error",err);
+      throw err;
+    }
   }
-};
 
-// Fetch company overview
-export const fetchCompanyOverview = async (symbol: string) => {
-  try {
-    const response = await axios.get(`https://www.alphavantage.co/query`, {
-      params: {
-        function: 'OVERVIEW',
-        symbol,
-        apikey: process.env.SERVICE_G_API_KEY,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching company overview:', error);
-    throw error;
-  }
-};
+}
+
+
    
   
   

@@ -6,6 +6,7 @@ import LineChart, { LineChart2, LineChart3 } from '../../Components/Chart/LineCh
 export default function Home() {
   return (
     <div>
+      <h1 className='home-title'>Stock Market Historical Data</h1>
       <CardGroup className='container'>
         <Card className='box-card'>
           <Card.Title className='title'>AAPL</Card.Title>

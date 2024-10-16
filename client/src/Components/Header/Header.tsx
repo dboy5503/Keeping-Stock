@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/header.css';
 // import SearchResults from '../Search/Search-Stocks';
+// import SavedStocks from "../../Pages/SavedStocks/Saved-Stocks2";
 
 
 const Header : React.FC = () => {
@@ -33,13 +34,14 @@ const Header : React.FC = () => {
         {/* Nav Links */}
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
+         
           <li><Link to="/signUp" onClick={closeMenu}>Signup</Link></li>
+          <li><Link to="/" onClick={closeMenu}>Home</Link></li>
           <li><Link to="/news" onClick={closeMenu}>News</Link></li>
-
+      
           {/* Search Bar inside Hamburger */}
-          <li className="search-bar">
-            <input type="text" placeholder="Search for a stock" />
-            <button className="search-bar button" type="submit">🔍</button>
+          <li >
+          <li><Link to="/search" onClick={closeMenu}>Search Stocks 🔍</Link></li>
           </li>
         </ul>
       </nav>
