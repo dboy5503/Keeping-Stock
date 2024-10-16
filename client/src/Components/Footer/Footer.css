@@ -1,9 +1,10 @@
-.footer{
-    background-color: #333;
+.footer {
+    background-color: #007ab3;
     text-align: center;
     color: #ffffff;
-    position:sticky;
+    position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
     
 
