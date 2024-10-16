@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../../assets/stylesheets/header.css';
 // import SearchResults from '../Search/Search-Stocks';
+import SavedStocks from "../../Pages/SavedStocks/Saved-Stocks2";
 
 const Header : React.FC = () => {
     // State to manage whether the menu is open or closed

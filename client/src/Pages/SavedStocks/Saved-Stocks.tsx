@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../../assets/stylesheets/SavedStocks.css'; // Your existing CSS
-import { fetchStockData, fetchCompanyOverview } from '../../api/stockAPI';
+// import { fetchStockData, fetchCompanyOverview } from '../../api/stockAPI';
 import EditableTitle from './Edit-Title';
 
 interface Stock {
