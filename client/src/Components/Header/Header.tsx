@@ -17,7 +17,7 @@ const Header : React.FC = () => {
       <header>
       <nav className="navbar">
         {/* Logo */}
-        <div className="projectFont">Keeping Stock</div>
+        <Link to="/" className="projectFont">Keeping Stock</Link>
 
         {/* Hamburger menu (hidden by default)*/}
         <label htmlFor="toggle-nav" className="hamburger" onClick={toggleMenu}>
@@ -28,7 +28,6 @@ const Header : React.FC = () => {
 
         {/* Nav Links */}
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-          <li><Link to="/">Home</Link></li>
           <li><Link to="/login">Login</Link></li>
           <li><Link to="/signUp">Signup</Link></li>
           <li><Link to="/saved-stocks">Saved Stocks</Link></li>
