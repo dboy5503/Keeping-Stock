@@ -15,6 +15,9 @@ import Home from "./Pages/HomePage/Home";
 import "./App.css";
 import SignUp from "./Pages/SignUp/Sign-Up";
 
+import { Search } from "./Pages/Search/search";
+import { StockDataPage } from "./Pages/StockDataPage/stockData";
+
 const ProtectedRoute: React.FC<{ loggedIn: boolean }> = ({ loggedIn }) => {
   const navigate = useNavigate();
   useEffect(() => {
@@ -50,10 +53,15 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
-          <Route path="/news" element={<FinancialNews />} />
-          {/* <Route path="/saved-stocks" element={<SavedStocks />} /> */}
         <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+       
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<FinancialNews />} />
+          <Route path='search' element={<Search />} />
+          <Route path="/ticker/:tikerSymbol" element={<StockDataPage />} />
+      
+       
+        
          
           
          

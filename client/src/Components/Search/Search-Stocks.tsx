@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import AuthService from '../../utils/auth'
 
-import { useEffect } from 'react';
 
 interface Stock {
-    symbol: string;
+    ticker: string;
     name: string;
-    price: number;
+    market: string;
     change: number;
 }
 
@@ -14,36 +14,49 @@ const SearchResults: React.FC = () => {
     const [results, setResults] = useState<Stock[]>([]);
     const [error, setError] = useState<string | null>(null);
 
-    // Function to handle search action
-    const handleSearch = async () => {
+    
 
-    }
-
-
-    useEffect(()=>{
+        // Function to handle search action
+        const handleSearch = async () => {
+            fetchStocks();
+    
+    
+    
+        }
+   
         const fetchStocks = async () => {
 
-        try {
-            const response = await fetch(`/api/stocks/`); // Replace with your API
-            const data = await response.json();
-            if (data && data.length > 0) {
-                setResults(data); // Set the results based on API response
-                setError(null); // Clear any previous error
-            } else {
-                setResults([]);
-                setError('No results found.');
+            try {
+                const token = AuthService.getToken() // getting the token from the backend and attaching for all future request
+                const response = await fetch(`api/stocks/search?search=${searchInput}`,
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
+                // Replace with your API
+                const data = await response.json();
+                console.log('data', data);
+                if (data && data.results.length > 0) {
+                    setResults(data.results); // Set the results based on API response
+                    console.log('search stocks', data.results);
+                    setError(null); // Clear any previous error
+                } else {
+                    setResults([]);
+                    setError('No results found.');
+                }
+            } catch (err) {
+                setError('An error occurred while fetching results.');
+                console.error(err);
             }
-        } catch (err) {
-            setError('An error occurred while fetching results.');
-            console.error(err);
         }
-    }
-    fetchStocks();
+    
     
 
-    }, [searchInput]);
        
+
+  
+
     
+
+
 
     return (
         // add search bar styling from header.css 
@@ -61,22 +74,23 @@ const SearchResults: React.FC = () => {
             <main>
                 <h2>Search Results</h2>
                 {error && <p className="error">{error}</p>}
-                {results.length > 0 ? (
-                    <ul>
-                        {results.map((stock) => (
-                            <li key={stock.symbol}>
-                                <h3>{stock.name} ({stock.symbol})</h3>
-                                <p>Price: ${stock.price.toFixed(2)}</p>
-                                <p>Change: {stock.change.toFixed(2)}%</p>
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>No results found.</p>
-                )}
-            </main>
-        </div>
-    );
+                            {results.length > 0 ? (
+                                <ul>
+                                    {results.map((results) => (
+                                        <li key={results.ticker}>
+                                            <h1>{results.ticker}</h1>
+                                            <h3>{results.name} ({results.market})</h3>
+                                         
+                                        
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No results found.</p>
+                            )} // Add closing parenthesis here
+                     </main>
+                    </div>
+                );
 };
 
 export default SearchResults;

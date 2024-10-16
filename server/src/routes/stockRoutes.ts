@@ -35,6 +35,12 @@ router.get('/financeNews', async  (_req:Request, res:Response) => {
         const results = await stockApi.getFinanceNews()
         res.json(results) 
     })
+router.get('/search:search', async  (req:Request, res:Response) => {
+
+        console.log( req.query.search)
+        const results = await stockApi.stockSearch(req.query.search || '')
+        res.json(results) 
+    })
 
 
 
