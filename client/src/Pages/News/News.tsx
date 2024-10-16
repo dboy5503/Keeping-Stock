@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 import AuthService from '../../utils/auth'
+import '../../assets/stylesheets/News.css';
 
 
 const FinancialNews: React.FC = () => {
@@ -8,6 +9,7 @@ const FinancialNews: React.FC = () => {
         title: string;
         summary: string;
         url: string;
+        banner_image: string;
     }
 
     const [news, setNews] = useState<Article[]>([]);
@@ -41,17 +43,22 @@ const FinancialNews: React.FC = () => {
   
     return (
         <div className="news-container">
+        <h1 className='title'>Financial News</h1>
+        <div className="news-container">
             {news.map((item, index) => (
                 <div key={index} className="news-box">
                     <h3>{item.title}</h3>
+                    <img src={item.banner_image} alt="news" className='image' />
                     <p>{item.summary}</p>
-                    <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    <a href={item.url} target="_blank" rel="noopener noreferrer" className='read' >
                         Read more
                     </a>
                 </div>
             ))}
         </div>
+        </div>
     );
 };
 
 export default FinancialNews;
+
