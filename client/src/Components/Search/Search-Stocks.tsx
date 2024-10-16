@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthService from "../../utils/auth";
-import "../../styles/Search.css";
+import "../../assets/stylesheets/search.css";
 
 interface Stock {
   ticker: string;
