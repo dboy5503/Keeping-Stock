@@ -14,6 +14,8 @@ import {
 import { Line } from "react-chartjs-2";
 import { StockDetails } from "../../API/ApiInterface.js";
 import "./LineChartStyle.css";
+import AuthService from '../../utils/auth'
+
 
 
 ChartJS.register(
@@ -31,7 +33,11 @@ export default function LineChart() {
 
   const FetchChartData = async () => {
     try {
-      const response = await fetch("/api/stocks/ticker/AAPL");
+      const token = AuthService.getToken()
+      const response = await fetch("/api/stocks/ticker/AAPL",
+      {headers: {Authorization: `Bearer ${token}`}}
+    );
+      
       const data = await response.json();
       setChartData(data.results);
       localStorage.setItem("AaplChartData", JSON.stringify(data.results));
@@ -122,7 +128,11 @@ export function LineChart2() {
 
   const FetchChartData = async () => {
     try {
-      const response = await fetch("/api/stocks/ticker/META");
+      const token = AuthService.getToken()
+      const response = await fetch("/api/stocks/ticker/META",
+      {headers: {Authorization: `Bearer ${token}`}}
+    );
+      
       const data = await response.json();
       console.log(data);
       setChartData(data.results);
@@ -141,13 +151,7 @@ export function LineChart2() {
       // If there's no data in localStorage, fetch data from the API
       FetchChartData();
     }
-    // FetchChartData every 10 minutes
-    // const timer = setInterval(() => {
-    //   FetchChartData();
-    // }, 10 * 60 * 1000); // 10 minutes in milliseconds
-
-    // // Clear the timer when the component unmounts
-    // return () => clearInterval(timer);
+    
   }, []);
 
   //labels for the x-axis to show the date
@@ -221,7 +225,11 @@ export function LineChart3() {
 
   const FetchChartData = async () => {
     try {
-      const response = await fetch("/api/stocks/ticker/NVDA");
+      const token = AuthService.getToken() 
+      const response = await fetch("/api/stocks/ticker/NVDA",
+      {headers: {Authorization: `Bearer ${token}`}}
+    );
+      
       const data = await response.json();
       console.log(data);
       setChartData(data.results);
@@ -238,13 +246,7 @@ export function LineChart3() {
       // If there's no data in localStorage, fetch data from the API
       FetchChartData();
     }
-    // FetchChartData every 10 minutes
-    // const timer = setInterval(() => {
-    //   FetchChartData();
-    // }, 10 * 60 * 1000); // 10 minutes in milliseconds
-
-    // // Clear the timer when the component unmounts
-    // return () => clearInterval(timer);
+   
   }, []);
 
   const lineChartData = {
