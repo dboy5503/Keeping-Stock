@@ -63,12 +63,13 @@ html {
 
 /* Styling the news container for any loading state */
 .news-container {
+    display: flex;
     padding: 100px;
     margin-top: 10px;
     border-radius: 15px;
     background-color: #f5f5f5;
     /* this is new */
-    /* width: 500px; */
+    width: 90%;
     align-items: center;
     justify-content: center;
 }
