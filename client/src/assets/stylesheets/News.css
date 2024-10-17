@@ -1,83 +1,81 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 html {
-    background-color: #e0e1dd;
+  background-color: #e0e1dd;
 }
-.title{
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: #333;
-    text-align: center;
-    
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 5%;
+  margin-bottom: 10px;
+  color: #333;
+  text-align: center;
 }
-.image{
-    width: 400px;
-    border: blue;
-    border-radius:10px;
-    }
 
-    .image:hover{
-        transition: ease-in-out 0.5s;
-        border: 2px solid #2e04ff;
-        border-radius: 3;
-        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    }
-    
+.image {
+  width: 400px;
+  border: blue;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+}
 
-   
+.image:hover {
+  transition: ease-in-out 0.5s;
+  border: 2px solid #2e04ff;
+  border-radius: 3;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
 
 /* News Section */
 
 .news-box {
-    
-    padding: 1px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    box-shadow: 5 2px 100px rgba(17, 10, 204, 0.1);
-    
+  padding: 1px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 5 2px 100px rgba(17, 10, 204, 0.1);
+    background-color: #ffffff;
 }
-.news-box h1{
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
+
+.news-box h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333333;
 }
 /* made this an h2 instead of h3 */
 .news-box h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #000000;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #000000;
 }
 
 .news-box p {
-
-   
-    border-radius: 10px;
-    font-size: 16px;
-    color: black;
+  border-radius: 10px;
+  font-size: 16px;
+  color: black;
 }
 
 /* Styling the news container for any loading state */
 .news-container {
-    padding: 100px;
-    margin-top: 10px;
-    border-radius: 15px;
-    background-color: #ffffff;
-    /* this is new */
-    /* width: 500px; */
-    align-items: center;
-    justify-content: center;
+  margin-top: 5%;
+  margin: 0 auto;
+  border-radius: 15px;
+  background-color: #7b2f2f;
+  /* this is new */
+  width: 800px;
+  align-items: center;
+  justify-content: center;
 }
 
 .read {
-    transition-duration: 0.4s;
-  }
-  
-  .read:hover { 
-    color: #007ab3;
+  transition-duration: 0.4s;
+}
 
-  } 
+.read:hover {
+  color: #78879a;
+}

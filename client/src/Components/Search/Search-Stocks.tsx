@@ -13,9 +13,11 @@ const SearchResults: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>("");
   const [results, setResults] = useState<Stock[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [searchInitiated, setSearchInitiated] = useState<boolean>(false);
 
   // Function to handle search action
   const handleSearch = async () => {
+    setSearchInitiated(true);
     fetchStocks();
   };
 
@@ -25,13 +27,12 @@ const SearchResults: React.FC = () => {
       const response = await fetch(`api/stocks/search?search=${searchInput}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      // Replace with your API
       const data = await response.json();
       console.log("data", data);
       if (data && data.results.length > 0) {
-        setResults(data.results); // Set the results based on API response
+        setResults(data.results);
         console.log("search stocks", data.results);
-        setError(null); // Clear any previous error
+        setError(null); 
       } else {
         setResults([]);
         setError("No results found.");
@@ -44,18 +45,24 @@ const SearchResults: React.FC = () => {
 
   return (
     // add search bar styling from header.css
-    <div className="search-results">
+    <div className="main-container">
+    <div className="search-container">
       <header>
         <h1>Search for Stocks</h1>
-        <input
+        <div className="search-bar-container">
+        <input className="search-bar"
           type="text"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           placeholder="Search for a stock..."
         />
-        <button className="search-btn" onClick={handleSearch}>Search</button>
+        <button className="search-btn" onClick={handleSearch} type="submit">Search 🔍</button>
+      </div>
       </header>
       <main>
+        <div className="search-results">
+          {searchInitiated && (
+            <>
         <h2>Search Results</h2>
         {error && <p className="error">{error}</p>}
         {results.length > 0 ? (
@@ -72,7 +79,11 @@ const SearchResults: React.FC = () => {
         ) : (
           <p>No results found.</p>
         )}
+        </>
+          )}
+        </div>
       </main>
+    </div>
     </div>
   );
 };

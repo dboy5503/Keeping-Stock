@@ -63,6 +63,7 @@ const Login: React.FC = () => {
   };
 
   return (
+    <body>
     <div className="main">
     <div className="login-container">
       <h2>Login</h2>
@@ -108,10 +109,11 @@ const Login: React.FC = () => {
         <div>
       {isLoggedIn && <p>Login successful!</p>}
     </div>
-        <p className="new-user">New User? <Link to="/Sign-Up">Create an Account</Link></p>
+        <p className="new-user">New User? <Link to="/SignUp">Create an Account</Link></p>
       </form>
     </div>
     </div>
+    </body>
   );
 };
 
