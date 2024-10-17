@@ -37,4 +37,4 @@ A stock tracking application that provides up-to-date financial news. In the fut
     ## Version History
     - 0.1 (Beta)
         - Initial Release.
-        - Deployed Link: (Keeping Stock)[www.keeping-stock.onrender.com]
+        - Deployed Link: [Keeping Stock](www.keeping-stock.onrender.com)
