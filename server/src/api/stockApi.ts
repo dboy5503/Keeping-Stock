@@ -60,7 +60,6 @@ class StockApi {
       const response = await fetch( // this will provide the historical data of a stock
         `${this.baseURL}aggs/ticker/${ticker}/range/1/day/2024-01-09/2024-10-16?adjusted=true&sort=asc&apiKey=${this.apiKey}` 
       );
-      console.log(response);
       const stock = await response.json();
    
       return stock;
@@ -74,7 +73,6 @@ class StockApi {
     const response = await fetch(
       `${this.baseURL}/reference/ticker/${ticker}?apiKey=${this.apiKey}`
     );
-    console.log(response);
     const stock = await response.json();
     return stock;
     } catch (err){
@@ -104,7 +102,6 @@ class StockApi {
           `${this.globalBaseURL}query?function=NEWS_SENTIMENT&topics=finance&apikey=${this.globalApiKey}`,
           // {headers: {Authorization: `Bearer ${token}`}}
         );
-        console.log(response);
         const stock = await response.json();
       
         return stock;
@@ -138,8 +135,7 @@ class StockApi {
     const response = await fetch(`${this.polyBaseURL}/reference/tickers?market=stocks&search=${search}&active=true&sort=ticker&order=asc&limit=50&apiKey=${this.polyApiKey}`,
     );
       const stock = await response.json();
-      console.log(stock);
-      // return stock;
+       return stock;
       // console.log(response);
     } catch (err) {
       console.log("Error",err);
