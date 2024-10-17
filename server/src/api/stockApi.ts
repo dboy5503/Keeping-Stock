@@ -132,7 +132,7 @@ class StockApi {
   console.log('hello',search);
   try {
     
-    const response = await fetch(`${this.polyBaseURL}/reference/tickers?market=stocks&search=${search}&active=true&sort=ticker&order=asc&limit=50&apiKey=${this.polyApiKey}`,
+    const response = await fetch(`${this.polyBaseURL}reference/tickers?market=stocks&search=${search}&active=true&sort=ticker&order=asc&limit=50&apiKey=${this.polyApiKey}`,
     );
       const stock = await response.json();
        return stock;
