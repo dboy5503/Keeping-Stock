@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <footer>
       <div className="footer-content">
         <div className="footer-section about">
-          <h1 className="logo-text">Copyright 2024 | Keeping Stock</h1>
+          <p className="logo-text">Copyright 2024 | Keeping Stock</p>
           <p className="keep">
             Keeping Stock is a web application that allows users to search for
             and save their favorite stocks.

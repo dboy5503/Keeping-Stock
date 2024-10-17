@@ -5,7 +5,7 @@
   }
   
   html {
-    background-color: #e0e1dd;
+    background-color: #ffffff;
 }
 
 /* Main content for login form */
@@ -14,6 +14,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('../images/Site-Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ffffff;
 }
 
 .login-container {
@@ -59,15 +64,15 @@
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
-    background-color: #bcd7e4;
+    background-color: #c4d2e4;
     outline: none;
 }
 
 #email, #password {
     width: 60%;
     border-radius: 10px;
-    background-color: #bcd7e4;
-    color: rgba(73, 73, 73, 0.596);
+    background-color: #c4d2e4;
+    color: rgba(0, 0, 0, 0.596);
     outline: none;
 }
 
@@ -82,13 +87,13 @@
 }
 
 .signin-btn:hover {
-    box-shadow: 0 0 10px #8fc090;
+    box-shadow: 0 0 10px #8799ae;
 }
 
 .new-user {
     margin-top: 20px;
     font-size: 14px;
-    color: #2d702e;
+    color: #324250;
     text-decoration: none;
 }
 

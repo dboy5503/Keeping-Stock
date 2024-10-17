@@ -5,7 +5,7 @@
   }
 
 html {
-    background-color: #e0e1dd;
+    background-color: #ffffff;
 }
 
 /* Sign-Up Form Container */
@@ -14,6 +14,11 @@ html {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-image: url('../images/Site-Background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #ffffff;
 }
 
 .signup-container {
@@ -58,7 +63,7 @@ html {
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
-    background-color: #bcd7e4;
+    background-color: #c4d2e4;
     outline: none;
 }
 
@@ -68,8 +73,8 @@ html {
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
-    background-color: #bcd7e4;
-    color: rgba(73, 73, 73, 0.596);
+    background-color: #c4d2e4;
+    color: rgb(37, 37, 37);
     outline: none;
 }
 

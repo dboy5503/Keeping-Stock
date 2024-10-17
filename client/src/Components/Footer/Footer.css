@@ -1,5 +1,5 @@
 footer {
-    background-color: #007ab3;
+    background-color: #9fb3cc;
     text-align: center;
     color: #ffffff;
     position: fixed;
@@ -8,6 +8,17 @@ footer {
     width: 100%;
     padding: 1px;
     margin-bottom: 0;
+}
+
+.footer-content {
+    background-color: #9fb3cc;
+    margin: 5px;
+}
+
+.logo-text {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 5px;
 }
 
 .keep{

@@ -1,6 +1,6 @@
 
 
-.aapl{
+.aapl {
    height: 50%;
     width: 100%;
     background-color: #ffffff;
@@ -12,20 +12,7 @@
     flex-direction: column;
 }
 
-.Meta{
-    height: 50%;
-    width: 100.%;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4 10px rgba(0, 0, 0, 0.378);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-
-}
-
-.NVDA{
+.Meta {
     height: 50%;
     width: 100%;
     background-color: #ffffff;
@@ -38,14 +25,27 @@
 
 }
 
-.NVDA:hover{
-    box-shadow: 0 0 10px 5px rgba(188, 179, 5, 0.989); /* White glowing effect */
+.NVDA {
+    height: 50%;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4 10px rgba(0, 0, 0, 0.378);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
 }
 
-.aapl:hover{
-    box-shadow: 0 0 10px 5px rgba(188, 179, 5, 0.989); /* White glowing effect */
+.NVDA:hover {
+    box-shadow: 0 0 10px 5px #78879a; /* White glowing effect */
 }
 
-.Meta:hover{
-    box-shadow: 0 0 10px 5px rgba(188, 179, 5, 0.989); /* White glowing effect */
+.aapl:hover {
+    box-shadow: 0 0 10px 5px #78879a; /* White glowing effect */
+}
+
+.Meta:hover {
+    box-shadow: 0 0 10px 5px #78879a; /* White glowing effect */
 }

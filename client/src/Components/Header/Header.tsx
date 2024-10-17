@@ -20,23 +20,22 @@ const Header : React.FC = () => {
 
     return (
       <header>
-      <nav className="navbar">
+      <nav className={`navbar ${menuOpen ? "open" : ""}`}>
         {/* Logo */}
-        <Link to="/" className="projectFont">Keeping Stock</Link>
+        <Link to="/" className={`logo ${menuOpen ? "open" : ""}`}>Keeping Stock</Link>
 
         {/* Hamburger menu (hidden by default)*/}
-        <label htmlFor="toggle-nav" className="hamburger" onClick={toggleMenu}>
+        <div className={`hamburger ${menuOpen ? "open" : ""}`} onClick={toggleMenu}>
           <span></span>
           <span></span>
           <span></span>
-        </label>
+        </div>
 
         {/* Nav Links */}
+        {/* sign up is linked under login/ create account */}
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
-         
-          <li><Link to="/signUp" onClick={closeMenu}>Signup</Link></li>
           <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+          <li><Link to="/login" onClick={closeMenu}>Login</Link></li>
           <li><Link to="/news" onClick={closeMenu}>News</Link></li>
       
           {/* Search Bar inside Hamburger */}
